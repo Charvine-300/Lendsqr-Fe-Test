@@ -1,0 +1,90 @@
+//SCSS Variables
+$Black: #000000;
+$Blacklist: #E4033B;
+$Pending: #E9B200;
+$Active: #39CD62;
+$Inactive: #545F7D;
+$DeepBlue: #213F7D;
+$White: #FFFFFF;
+$Cyan: #39CDCC;
+$Dashboard: #fafafa;
+$BlackBack: #202020;
+$InputBorder: rgba(84, 95, 125, 0.15);
+
+
+//Animation On-hover menu item
+@mixin menuSelect {
+    &:hover {
+        cursor: pointer;
+        color: $Grey;
+    }
+    &:after {
+        content: '';
+        display: block;
+        transform: scaleX(0);  
+        border-bottom: solid 3px $MarvelRed;  
+        transition: transform 250ms ease-in-out;
+    }
+    &:hover:after {
+        transform: scaleX(1); 
+    }
+}
+
+
+//Styling for flexbox
+@mixin flexboxWrap($direction, $justify, $align) {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: $direction;
+    justify-content: $justify;
+    align-items: $align;
+}
+
+
+
+//Styling for elements and items of various sizes and margins
+@mixin container($width, $height, $margin) {
+    width: $width;
+    height: $height;
+    margin: $margin;
+}
+
+//Stylings to add to layout at Landscape mode
+@mixin landscapeSet {
+    @media screen and (orientation: landscape) {
+        @content;
+    }
+}
+
+//Stylings to add to layout at a minimum width of 1024px
+@mixin desktopView {
+    @media screen and (min-width: 1024px) {
+        @content;
+    }
+}
+
+//Styling for a set of devices that fall within the range set
+@mixin dynamicQueries($min, $max) {
+    @media screen and (min-width: $min) and (max-width: $max) {
+        @content;
+    }
+}
+
+//Styling for layout to show at programmer's choice
+@mixin minWidth($arch) {
+    @media screen and (min-width: $arch) {
+        @content;
+    }
+}
+
+@mixin maxWidth($arch) {
+    @media screen and (max-width: $arch) {
+        @content;
+    }
+}
+
+//Border styling for some parent elements
+@mixin borderDecor($digit) {
+    border-top-left-radius: $digit;
+    border-bottom-right-radius: $digit;
+}
