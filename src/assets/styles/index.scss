@@ -54,19 +54,11 @@
 
 
 /*==========  Class Rules  ==========*/
-.form-wrapper {
-    @include container(80%, 100%, 0px auto);
-
-    @include desktopView {
-        width: 100%;
-    }
-}
-
 .logo {
-    @include container(fit-content, fit-content, 0 auto 50px auto);
+    @include container(fit-content, fit-content, 50px auto);
 
     @include desktopView {
-       margin: 0 0 80px 5%;
+       margin: 30px 0 80px 5%;
     }
 }
 
@@ -133,6 +125,12 @@
                 opacity: 0.6;
             }
         }
+
+        .error {
+            color: $Blacklist;
+            padding-bottom: 10px;
+            font-family: 'Avenir Next Regular';
+        }
     }
 
     .log-in {
@@ -156,12 +154,16 @@
             display: block;
             margin: 40px auto;
         }
+
+        h1, #details {
+            text-align: center;
+        }
+    }
+
+    @include landscapeSet {
+        .log-in {
+            width: 77%;
+            margin: 40px 0;
+        }
     }
 }
-
-/*==========  Element Rules  ==========*/
-
-
-
-
-/*==========  Animation and Pseudo Rules  ==========*/
