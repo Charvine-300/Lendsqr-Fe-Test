@@ -1,6 +1,6 @@
 import { Fragment } from "react"
 import Login from "./components/Login"
-import Dashboard from "./components/Dashboard"
+import Homepage from "./components/Homepage"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 
 function App() {
@@ -11,7 +11,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Navigate to='/login' />} />
           <Route path="/login" element={<Login />} />
-          <Route path='/dashboard' element={<Dashboard />} />
+          <Route path='/dashboard/*' element={<Homepage />} />
         </Routes>
 
       </Router>

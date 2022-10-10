@@ -1,0 +1,137 @@
+@import 'mixinsVariables';
+
+
+
+
+/*==========  ID Rules  ==========*/
+#hamburger, #close {
+    @include container(40px, 40px, 0);
+}
+
+#close {
+    display: block;
+    //margin-left: auto;
+    margin-left: 20px;
+}
+
+#search-bar {
+    @include container(fit-content, fit-content, 0);
+    position: relative;
+
+    input {
+        @include container(200px, 35px, 0);
+        font-family: 'Work Sans';
+        color: $DeepBlue;
+        border-radius: 8px;
+        padding: 0px 10px;
+        border: 1px solid $InputBorder;
+
+        &::placeholder {
+            font-family: 'Work Sans';
+            color: $Inactive;
+            font-size: 12px;
+            opacity: 0.7;
+        }
+    }
+
+    span {
+        @include container(40px, 100%, 0);
+        background-color: $Cyan;
+        position: absolute;
+        right: 0;
+        border-top-right-radius: 8px;
+        border-bottom-right-radius: 8px;
+
+        img {
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    }
+
+
+    @include desktopView {
+        input {
+            width: 400px;
+        }
+    }
+}
+
+
+
+/*==========  Class Rules  ==========*/
+.desktop {
+    @include maxWidth(1023px) {
+        display: none !important;
+    }
+}
+
+.mobile {
+    @include desktopView {
+        display: none !important;
+    }
+}
+
+.search-mobile {
+    margin: 20px auto 0px auto !important;
+
+    input {
+        width: 300px !important;
+    }
+}
+
+.header-items {
+    @include container(90%, 100%, 0px auto);
+    @include flexboxWrap(row, space-between, center); 
+    
+    @include desktopView {
+        width: 95%;
+    }
+}
+
+.user-items {
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+
+    .profile-name {
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $DeepBlue;
+        padding: 0px 10px;
+    }
+
+    @include desktopView {
+        .docs {
+            font-family: 'Roboto';
+            font-weight: 400;
+            font-size: 16px;
+            line-height: 19px;
+            color: $DeepBlue;
+            margin: auto 30px;
+            text-decoration-line: underline;
+        }
+
+    }
+}
+
+
+
+/*==========  Element Rules  ==========*/
+header {
+    @include container(100%, fit-content, 0px auto);
+    position: sticky;
+    background-color: $White;
+    padding: 15px 0px;
+    z-index: 1;
+    box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.04);
+
+    @include desktopView {
+        z-index: 10;
+    }
+}

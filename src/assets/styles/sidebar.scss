@@ -1,0 +1,110 @@
+@import 'mixinsVariables';
+
+
+
+/*==========  ID Rules  ==========*/
+#mobile-logo {
+    margin: 20px;
+}
+
+#sidebar {
+    @include container(100%, 100vh, 0);
+    overflow-y: scroll;
+    overflow-x: hidden;
+
+    &::-webkit-scrollbar {
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $White;
+    }
+      
+    &::-webkit-scrollbar-thumb {   
+        background: #d1d1d1;
+        border-radius: 5px;
+    }
+      
+    &::-webkit-scrollbar-thumb:hover {    
+        background: #888;
+    }
+}
+
+
+/*==========  Class Rules  ==========*/
+.sidebar-wrapper {
+    @include container(100vw, 100vh, 0);
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 3;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.4);
+
+    &::-webkit-scrollbar {
+        display: none;
+    }
+
+
+    @include desktopView {
+        @include container(fit-content, 100vh, 0);
+        background-color: transparent;
+    }
+}
+
+.menu {
+    @include container(280px, fit-content, 0);
+    background-color: $White;
+    padding: 20px 0px;
+    padding-left: 0px;
+
+    @include desktopView {
+        padding: 40px 0px;
+    }
+}
+
+.menu-item-flex {
+    @include flexboxWrap(row, flex-start, center);
+    padding-left: 20px;
+    border-left: 3px solid transparent;
+
+    p {
+        font-family: 'Work Sans';
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 19px;
+        color: $DeepBlue;
+        padding: 0px 10px;
+        text-transform: capitalize;
+    }
+
+    .blur-color {
+        opacity: 0.5;
+    }
+
+    &:hover {
+        background-color: rgba(57, 205, 204, 0.1);
+        border-color: $Cyan;
+
+        .blur-color {
+            opacity: 1;
+        }
+    }
+}
+
+.menu-list {
+    @include container(100%, fit-content, 15px auto);
+    padding-left: 25px;
+
+    .menu-title {
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 14px;
+        color: $Inactive;
+        text-transform: uppercase;
+    }
+}
+
+
+
+/*==========  Element Rules  ==========*/

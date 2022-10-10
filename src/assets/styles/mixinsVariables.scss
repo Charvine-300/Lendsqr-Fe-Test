@@ -1,5 +1,5 @@
 //SCSS Variables
-$Black: #000000;
+$Black: #502323;
 $Blacklist: #E4033B;
 $Pending: #E9B200;
 $Active: #39CD62;
@@ -7,9 +7,17 @@ $Inactive: #545F7D;
 $DeepBlue: #213F7D;
 $White: #FFFFFF;
 $Cyan: #39CDCC;
-$Dashboard: #fafafa;
+$Dashboard: #f9f9f9;
 $BlackBack: #202020;
 $InputBorder: rgba(84, 95, 125, 0.15);
+
+
+//Animation for hovering over buttons 
+@mixin buttonHover($color) {
+    &:hover {
+        box-shadow: 0 0 15px $color;   
+    }
+}
 
 
 //Animation On-hover menu item
