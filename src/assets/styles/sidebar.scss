@@ -65,7 +65,7 @@
 .menu-item-flex {
     @include flexboxWrap(row, flex-start, center);
     padding-left: 20px;
-    border-left: 3px solid transparent;
+    border-left: 6px solid transparent;
 
     p {
         font-family: 'Work Sans';

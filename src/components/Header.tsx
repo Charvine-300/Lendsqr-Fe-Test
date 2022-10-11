@@ -14,9 +14,12 @@ function Header() {
   //Stateful variable for search bar toggle in mobile view
   const [searchToggle, setSearchToggle] = useState('none');
 
+  //Stateful variable for sidebar toggle in mobile view
+  const [sidebarToggle, setSidebarToggle] = useState('none');
+
   const searchBarToggle = () => {
     if (searchToggle === 'none') {
-      setSearchToggle('display');
+      setSearchToggle('block');
     }
 
     else {
@@ -24,8 +27,6 @@ function Header() {
     }
   }
 
-  //Stateful variable for sidebar toggle in mobile view
-  const [sidebarToggle, setSidebarToggle] = useState('none');
 
   const SidebarToggle = () => {
     if (sidebarToggle === 'none') {

@@ -1,7 +1,7 @@
 import Header from './Header'
 import '../assets/styles/dashboard.scss'
 import { Routes, Route } from 'react-router-dom'
-import Dashboard from './Dashboard'
+import Users from './Users'
 
 
 
@@ -11,7 +11,7 @@ function Homepage() {
       <Header />
       
       <Routes>
-        <Route path='/' element={<Dashboard />} />
+        <Route path='users' element={<Users />} />
       </Routes>
     </div>
   )

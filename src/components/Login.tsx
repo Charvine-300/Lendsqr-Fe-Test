@@ -13,7 +13,7 @@ function Login() {
   //Form validation
   const { register, formState: { errors }, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
-    navigate('/dashboard');
+    navigate('/dashboard/users');
   }
 
   //Stateful variable for controlling password input show/hide feature
