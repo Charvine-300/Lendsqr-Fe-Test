@@ -9,7 +9,7 @@ import {
   customerMenu,
   businessMenu,
   settingMenu 
-} from '../../constants'
+} from '../constants'
 
 
 type Props = {

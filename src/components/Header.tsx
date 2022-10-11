@@ -8,6 +8,7 @@ import Avatar from '../assets/images/avatar.png'
 import Arrow from '../assets/images/arrow.png'
 import MobileSearch from '../assets/images/mobile_search.png'
 import Sidebar from './Sidebar'
+import Users from './Users'
 
 
 function Header() {
@@ -50,6 +51,7 @@ function Header() {
     <div style={{'position': 'relative'}}>
       {/* Sidebar Component */}
       <Sidebar display={sidebarToggle} toggle={SidebarToggle} />
+      <Users />
 
       <header>
         <div className="header-items">

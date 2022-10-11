@@ -27,8 +27,8 @@ import UserSavings from '../assets/images/savings.png'
 import { 
   MenuProps, 
   FeaturesProps,
-  TableHeadProps
-} from "../interfaces";
+  TableHeadProps,
+} from "../../interfaces";
 
 
 //Content for sidebar menu

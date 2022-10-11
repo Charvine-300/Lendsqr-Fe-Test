@@ -8,20 +8,87 @@
 
 }
 
+#pagination-wrapper {
+    @include container(fit-content, fit-content, 20px auto);  
+    @include flexboxWrap(row, center, center);
+    padding: 10px; 
+    padding-bottom: 60px;
+
+    .arrow-buttons {
+        position: relative;
+        @include container(24px, 24px, 0px 10px);
+        background-color: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
+
+        img {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+    }
+
+    button {
+        background: none;
+        border: none;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 16px;
+        line-height: 19px;
+        color: $Inactive;
+    }
+
+    @include desktopView {
+        display: inline-flex;
+        float: right;
+        margin: 20px 0;
+    }
+}
+
+#total-wrapper {
+    @include container(fit-content, fit-content, 20px auto);  
+    @include flexboxWrap(row, center, center);
+    padding: 10px; 
+    padding-bottom: 60px;  
+    
+    p {
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: $DeepBlue;
+    }
+
+    @include desktopView {
+        display: inline-flex;
+        float: left;
+        margin: 20px 0;
+    }
+}
+
+#bottom-details {
+    @include flexboxWrap(column, center, center);
+    @include container(100%, fit-content, auto);
+
+    @include desktopView {
+        flex-direction: row;
+        justify-content: space-between
+    }
+}
 
 
 /*==========  Class Rules  ==========*/
-.dashboard-wrapper {
-    min-height: 100vh;
-    background-color: $Dashboard;
-}
-
 .dashboard-details {
-    @include container(90%, 100%, 40px auto);
+    @include container(90%, 100%, 40px 5%);
+    position: absolute;
+    top: 90px;
 
     @include desktopView {
         @include container(65%, 100%, 20px 5%);
-        float: right;
+        right: 0;
     }
 
     @include minWidth(1336px) {
@@ -38,7 +105,7 @@
 }
 
 .feature {
-    @include container(41%, 100%, 10px 0);
+    @include container(40%, 100%, 10px 0);
     padding: 20px 10px 20px 20px;
     text-transform: uppercase;
     background: $White;
@@ -92,7 +159,7 @@
 .users-table {
     @include container(100%, 100%, 0);
     background: $White;
-    padding: 15px;
+    padding: 20px;
     border: 1px solid rgba(33, 63, 125, 0.06);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
@@ -102,8 +169,8 @@
     }
 
     thead tr th {
-        min-width: 130px;
-        margin: 0px 10px;
+        min-width: 150px;
+        margin: 0px 20px;
         font-family: 'Work Sans';
         font-weight: 600;
         font-size: 12px;
@@ -118,55 +185,52 @@
         }
     }
 
+    tbody tr {
+        margin: 5px 0px;
+    }
+
     tbody tr td {
         font-family: 'Work Sans';
         font-weight: 400;
         font-size: 14px;
         line-height: 16px;
         color: $Inactive;
+        position: relative;
     }
+}
 
+.user-options {
+    @include container(180px, fit-content, 0px);
+    position: absolute;
+    right: 0;
+    z-index: 20;
+    background-color: $White;
+    border: 1px solid rgba(84, 95, 125, 0.04);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
 
+    ul {
+        list-style: none;
+        margin: 0;
+        padding: 10px 15px;
 
-    /*thead tr {
-        @include flexboxWrap(row, center, center);
-        flex-wrap: nowrap;
-    }
-
-    tbody tr {
-        td {
+        li {
+            @include flexboxWrap(row, flex-start, center);
+            padding: 10px 0px;
             font-family: 'Work Sans';
-            font-weight: 400;
+            text-transform: capitalize;
+            font-weight: 500;
             font-size: 14px;
             line-height: 16px;
             color: $Inactive;
+            cursor: pointer;
+
+            img {
+                margin: 0px 5px;
+            }
         }
-    }
-
-    .table-flex {
-        width: 120px;
-        @include flexboxWrap(row, center, center);
-        display: inline-flex !important;
-        flex-wrap: nowrap;
-
-        img {
-            margin: 0px 10px;
-        }
-
-        p {
-            display: inline;
-            font-family: 'Work Sans';
-            font-weight: 600;
-            font-size: 12px;
-            line-height: 14px;
-            text-transform: uppercase;
-            color: $Inactive;
-        }
-    }*/
-
-
+    }    
 }
-
 
 
 /*==========  Element Rules  ==========*/  
@@ -177,4 +241,21 @@ h2 {
     font-size: 24px;
     line-height: 28px;
     color: $DeepBlue;
+}
+
+/*==========  User Status Rules  ==========*/ 
+.active {
+    @include statusType($Active, rgb(57, 205, 98));
+}
+
+.inactive {
+    @include statusType($Inactive, rgb(84, 95, 125));
+}
+
+.pending {
+    @include statusType($Pending, rgb(233, 178, 0));
+}
+
+.blacklisted {
+    @include statusType($Blacklisted, rgb(228, 3, 59));
 }

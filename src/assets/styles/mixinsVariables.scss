@@ -1,6 +1,6 @@
 //SCSS Variables
 $Black: #502323;
-$Blacklist: #E4033B;
+$Blacklisted: #E4033B;
 $Pending: #E9B200;
 $Active: #39CD62;
 $Inactive: #545F7D;
@@ -36,6 +36,16 @@ $InputBorder: rgba(84, 95, 125, 0.15);
     &:hover:after {
         transform: scaleX(1); 
     }
+}
+
+//Styling for status types 
+@mixin statusType($color, $rgb) {
+    @include container(fit-content, fit-content, 0);
+    color: $color;
+    border-radius: 100px;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    background-color: rgba($rgb, 0.06);
 }
 
 

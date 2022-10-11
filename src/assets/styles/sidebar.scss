@@ -46,7 +46,8 @@
 
 
     @include desktopView {
-        @include container(fit-content, 100vh, 0);
+        width: fit-content;
+        height: fit-content;
         background-color: transparent;
     }
 }

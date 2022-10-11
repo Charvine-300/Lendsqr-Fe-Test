@@ -62,6 +62,6 @@ export interface UserDataProps {
     monthlyIncome: [ string, string ];
     loanRepayment: string;
     },
-
+    status: string;
     id: string;
 }
