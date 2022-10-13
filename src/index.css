@@ -34,7 +34,4 @@ body, html {
   background-color: #f9f9f9;
 }
 
-input:focus select:focus {
-  outline: none !important;
-}
 

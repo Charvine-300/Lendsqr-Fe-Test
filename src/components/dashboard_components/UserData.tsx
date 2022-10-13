@@ -5,7 +5,7 @@ import '../../assets/styles/dashboard.scss'
 import FilterImg from '../../assets/images/filter.png'
 import Options from '../../assets/images/options.png'
 import { userTableHeads } from '../../constants'
-import { CurrentUsersContext } from '../../App'
+import { CurrentUsersContext, IsError, IsLoading } from '../../App'
 import Filter from './Filter'
 import ViewDetails from '../../assets/images/view.png'
 import BlacklistUser from '../../assets/images/blacklist.png'
@@ -20,6 +20,8 @@ function UserData({}: Props) {
 
   //list of all users drilled from App.tsx
   const userData = useContext(CurrentUsersContext);
+  const loading = useContext(IsLoading);
+  const error = useContext(IsError);
 
   //Stateful variables to toggle user options
   const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
@@ -72,8 +74,11 @@ function UserData({}: Props) {
   return (
     <div id='table-wrapper'>
       <Filter filterToggle={filterToggle} setFilterToggle={setFilterToggle} />
+      {loading && <div className='loading-error-message'> <p> Loading Users..</p> </div>}
+      {error && <div className='loading-error-message'> <p> Error Loading Users </p> </div>}
+      
       {/* Table of Users */}
-      <table className='users-table'>
+      {!loading && <table className='users-table'>
         <thead>
           <tr>
             {userTableHeads.map(head => (
@@ -84,7 +89,7 @@ function UserData({}: Props) {
             ))}
           </tr>
         </thead>
-        <tbody>
+       <tbody>
           {userData?.map(user => {
             return (
               <tr key={parseInt(user.id)}>
@@ -132,7 +137,7 @@ function UserData({}: Props) {
             )
           })}
         </tbody>
-      </table>
+      </table>}
     </div>
   )
 }

@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect } from 'react'
+import { Fragment, useState } from 'react'
 import '../assets/styles/header.scss'
 import Menu from '../assets/images/menu.png'
 import Close from '../assets/images/close.png'
@@ -8,15 +8,19 @@ import Bell from '../assets/images/bell.png'
 import Avatar from '../assets/images/avatar.png'
 import Arrow from '../assets/images/arrow.png'
 import MobileSearch from '../assets/images/mobile_search.png'
-import Sidebar from './Sidebar'
 
 
-function Header() {
+type Props = {
+  sidebarToggle: string;
+  setSidebarToggle: any;
+}
+
+function Header({ sidebarToggle, setSidebarToggle }: Props) {
   //Stateful variable for search bar toggle in mobile view
   const [searchToggle, setSearchToggle] = useState('none');
 
   //Stateful variable for sidebar toggle in mobile view
-  const [sidebarToggle, setSidebarToggle] = useState('desktop');
+  //const [sidebarToggle, setSidebarToggle] = useState('desktop');
   const [menuImg, setMenuImg] = useState(Menu);
 
   const searchBarToggle = () => {
@@ -47,9 +51,7 @@ function Header() {
 
 
   return (
-    <div style={{'position': 'relative'}}>
-
-
+    <Fragment>
       <header>
         <div className="header-items">
           <img src={Logo} alt="Comapny Logo" className='desktop' />
@@ -89,10 +91,7 @@ function Header() {
           <input type="text" placeholder='Search for anything' />
         </div>
       </header>
-
-        {/* Sidebar Component */}
-        <Sidebar display={sidebarToggle} />
-    </div>
+    </Fragment>
   )
 }
 

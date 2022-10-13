@@ -45,7 +45,7 @@
     overflow-y: scroll;
     overflow-x: hidden;
     z-index: 3;
-    position: absolute;
+    position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
 
     &::-webkit-scrollbar {
@@ -55,17 +55,18 @@
 
     @include desktopView {
         width: fit-content;
-        height: fit-content;
+        height: 100vh;
         display: block !important;
         background-color: transparent;
-        position: relative;
+        position: fixed;
+        float: left;
     }
 }
 
 .menu {
     @include container(280px, fit-content, 0);
     background-color: $White;
-    padding: 20px 0px;
+    padding: 20px 0px 60px 0px;
     padding-left: 0px;
 
     @include desktopView {

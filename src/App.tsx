@@ -15,7 +15,8 @@ export const PageNumberContext = createContext<number | any>(null);
 export const SetPageNumberContext = createContext<any | null>(null);
 export const PerPageContext = createContext<number | any>(null);
 export const SetPerPageContext = createContext<any | null>(null);
-
+export const IsError = createContext<boolean | any>(null);
+export const IsLoading = createContext<boolean | any>(null);
 
 function App() {
     //Creating an array of status types to pick at random for each user
@@ -23,6 +24,7 @@ function App() {
 
   const [userData, setUserData] = useState<UserDataProps[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   //Stateful variable for creating pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
@@ -39,9 +41,11 @@ function App() {
       //Storing data in localStorage for reset feature in filter form
       localStorage.setItem('userData', JSON.stringify(data));
       setUserData(data)
+      setIsLoading(false)
     })
     .catch((err) => {
       setIsError(true);
+      setIsLoading(false);
       console.log(err)
     });
     return () => {};
@@ -64,14 +68,18 @@ function App() {
               <PageNumberContext.Provider value={currentPage}>
                 <PerPageContext.Provider value={usersPerPage}>
                   <SetPerPageContext.Provider value={setUsersPerPage}>
-                    <Router>
-                      <ScrollToTop />
-                      <Routes>
-                        <Route path="/" element={<Navigate to='/login' />} />
-                        <Route path="/login" element={<Login />} />
-                        <Route path='/dashboard/*' element={<Homepage />} />
-                      </Routes>
-                    </Router>
+                    <IsError.Provider value={isError}>
+                      <IsLoading.Provider value={isLoading}>
+                        <Router>
+                          <ScrollToTop />
+                          <Routes>
+                            <Route path="/" element={<Navigate to='/login' />} />
+                            <Route path="/login" element={<Login />} />
+                            <Route path='/dashboard/*' element={<Homepage />} />
+                          </Routes>
+                        </Router>
+                      </IsLoading.Provider>
+                    </IsError.Provider>
                   </SetPerPageContext.Provider>
                 </PerPageContext.Provider>
               </PageNumberContext.Provider>
