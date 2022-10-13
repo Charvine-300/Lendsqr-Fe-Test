@@ -25,8 +25,14 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
   const onSubmit: SubmitHandler<FilterFormInput> = (data) => {
     //Filtering the data
     const newData = allData.filter((item: any) => {
-      return data.orgName.toLowerCase() === item.orgName.toLowerCase();
-    });
+      return (
+      data.orgName.toLowerCase() === item.orgName.toLowerCase()
+      || data.userName.toLowerCase() === item.userName.toLowerCase()
+      || data.email.toLowerCase() === item.email.toLowerCase()
+      || item.createdAt.includes(data.createdAt)
+      || item.phoneNumber.includes(data.phoneNumber)
+      || data.status.toLowerCase() === item.status.toLowerCase()    
+    )});
     setUserData(newData);
     setPerPage(newData.length);
 
@@ -101,7 +107,10 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             {errors.status?.type === 'required' && <p className='error' role="alert">This field is required</p>}
           </div>
           <div className="input-bars">
-            <input type='button' value='reset' className='filter-button' onClick={() => reset()}/>
+            <input type='button' value='reset' className='filter-button' onClick={() => { 
+              setUserData(allData);
+              reset();
+            }}/>
             <input type="submit" value='filter' className='filter-button' onClick={handleSubmit(onSubmit)} />
           </div>
         </form>
