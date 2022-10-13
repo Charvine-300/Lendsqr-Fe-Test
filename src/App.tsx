@@ -36,6 +36,8 @@ function App() {
         const random = Math.floor(Math.random() * statusTypes.length);
         data[i].status = statusTypes[random];
       }
+      //Storing data in localStorage for reset feature in filter form
+      localStorage.setItem('userData', JSON.stringify(data));
       setUserData(data)
     })
     .catch((err) => {

@@ -4,8 +4,14 @@
 /*==========  ID Rules  ==========*/
 #table-wrapper {
     @include container(100%, fit-content, 20px auto);
+    min-height: 600px !important;
     overflow-x: scroll;
     position: relative;
+    background: $White;
+    padding: 20px;
+    border: 1px solid rgba(33, 63, 125, 0.1);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
+    border-radius: 4px;
 
     &::-webkit-scrollbar {
         display: none;
@@ -175,11 +181,6 @@
 
 .users-table {
     @include container(100%, fit-content, 0);
-    background: $White;
-    padding: 20px;
-    border: 1px solid rgba(33, 63, 125, 0.1);
-    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
-    border-radius: 4px;
 
     thead {
         height: 70px;
@@ -208,7 +209,7 @@
 
     tbody tr {
         margin: 15px 0px;
-        height: 60px;
+        height: 60px !important;
     }
 
     tbody tr td {

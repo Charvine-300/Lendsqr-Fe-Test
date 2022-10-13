@@ -1,7 +1,7 @@
 import '../../assets/styles/filter.scss'
 import { useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { UserDataContext, SetUserDataContext, PerPageContext, SetPerPageContext } from '../../App'
+import { UserDataContext, SetUserDataContext } from '../../App'
 import { FilterFormInput } from '../../../interfaces'
 
 
@@ -14,8 +14,6 @@ type Props = {
 function Filter({ filterToggle, setFilterToggle }: Props) {
   const userData = useContext(UserDataContext);
   const setUserData = useContext(SetUserDataContext);
-  const perPage = useContext(PerPageContext);
-  const setPerPage = useContext(SetPerPageContext);
 
 
   //Saving the original data in case of reset
@@ -31,10 +29,9 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
       || data.email.toLowerCase() === item.email.toLowerCase()
       || item.createdAt.includes(data.createdAt)
       || item.phoneNumber.includes(data.phoneNumber)
-      || data.status.toLowerCase() === item.status.toLowerCase()    
+      || data.status.toLowerCase() === item.status.toLowerCase()
     )});
     setUserData(newData);
-    setPerPage(newData.length);
 
     //Closing the form
     setFilterToggle('none');
@@ -108,8 +105,11 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
           </div>
           <div className="input-bars">
             <input type='button' value='reset' className='filter-button' onClick={() => { 
-              setUserData(allData);
+              //Retrieving original data from localStorage
+              setUserData(JSON.parse(localStorage.getItem('userData') || '[]'));
+              console.log(userData);
               reset();
+              setFilterToggle('none');
             }}/>
             <input type="submit" value='filter' className='filter-button' onClick={handleSubmit(onSubmit)} />
           </div>
