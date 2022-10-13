@@ -108,6 +108,7 @@
             font-size: 12px;
             line-height: 16px;
             letter-spacing: 0.1em;
+            cursor: pointer;
         }
 
         input {
@@ -123,6 +124,10 @@
             &::placeholder {
                 color: $DeepBlue;
                 opacity: 0.6;
+            }
+
+            &:focus {
+                outline: none !important;
             }
         }
 
@@ -142,6 +147,7 @@
         font-size: 14px;
         text-transform: uppercase;
         @include buttonHover($Cyan);
+        cursor: pointer;
     }
 
 
