@@ -3,12 +3,12 @@
 
 /*==========  ID Rules  ==========*/
 #table-wrapper {
-    @include container(100%, fit-content, 20px auto);
+    @include container(95%, fit-content, 20px auto);
     min-height: 600px !important;
     overflow-x: scroll;
     position: relative;
     background: $White;
-    padding: 20px;
+    padding: 20px 2.5%;
     border: 1px solid rgba(33, 63, 125, 0.1);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
