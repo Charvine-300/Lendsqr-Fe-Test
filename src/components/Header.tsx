@@ -1,6 +1,7 @@
 import { Fragment, useState, useEffect } from 'react'
 import '../assets/styles/header.scss'
 import Menu from '../assets/images/menu.png'
+import Close from '../assets/images/close.png'
 import Search from '../assets/images/search.png'
 import Logo from '../assets/images/logo.png'
 import Bell from '../assets/images/bell.png'
@@ -8,7 +9,6 @@ import Avatar from '../assets/images/avatar.png'
 import Arrow from '../assets/images/arrow.png'
 import MobileSearch from '../assets/images/mobile_search.png'
 import Sidebar from './Sidebar'
-import Users from './Users'
 
 
 function Header() {
@@ -16,7 +16,8 @@ function Header() {
   const [searchToggle, setSearchToggle] = useState('none');
 
   //Stateful variable for sidebar toggle in mobile view
-  const [sidebarToggle, setSidebarToggle] = useState('none');
+  const [sidebarToggle, setSidebarToggle] = useState('desktop');
+  const [menuImg, setMenuImg] = useState(Menu);
 
   const searchBarToggle = () => {
     if (searchToggle === 'none') {
@@ -30,34 +31,30 @@ function Header() {
 
 
   const SidebarToggle = () => {
-    if (sidebarToggle === 'none') {
-      setSidebarToggle('block');
+    if (sidebarToggle === 'desktop') {
+      setSidebarToggle('mobile');
+      setMenuImg(Close);
     }
 
     else {
-      setSidebarToggle('none');
+      setSidebarToggle('desktop');
+      setMenuImg(Menu);
     }
   }
 
-  useEffect(() => {
-    if (document.body.clientWidth >= 1024) {
-      setSidebarToggle('block');
-    }
-  }, []);
+
   
 
 
   return (
     <div style={{'position': 'relative'}}>
-      {/* Sidebar Component */}
-      <Sidebar display={sidebarToggle} toggle={SidebarToggle} />
-      <Users />
+
 
       <header>
         <div className="header-items">
           <img src={Logo} alt="Comapny Logo" className='desktop' />
           <img 
-            src={Menu} 
+            src={menuImg} 
             alt="Lendsqr logo" 
             id='hamburger' 
             className='mobile' 
@@ -92,6 +89,9 @@ function Header() {
           <input type="text" placeholder='Search for anything' />
         </div>
       </header>
+
+        {/* Sidebar Component */}
+        <Sidebar display={sidebarToggle} />
     </div>
   )
 }

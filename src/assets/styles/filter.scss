@@ -1,0 +1,77 @@
+@import 'mixinsVariables';
+
+
+
+/*==========  ID Rules  ==========*/
+
+
+
+
+/*==========  Class Rules  ==========*/
+.filter-wrapper {
+    @include container(270px, fit-content, 0);
+    padding: 15px;
+    position: absolute;
+    z-index: 2;
+    top: 75px;
+    left: 20px;
+    background: $White;
+    border: 1px solid rgba(84, 95, 125, 0.14);
+    box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.input-bars {
+    margin: 10px auto;
+    font-family: 'Work Sans';
+
+    label {
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: $Inactive;
+        margin: 10px 0;
+        text-transform: capitalize;
+    }
+
+    input {
+        @include container(85%, 30px, 10px 0);
+        padding: 0 5%;
+        background: $White;
+        border: 1px solid rgba(33, 63, 125, 0.2);
+        border-radius: 8px;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        color: $Inactive;
+    }
+
+    .filter-button {
+        @include container(98px, 40px, 10px 10px 0 10px);
+        font-family: 'Work Sans';
+        font-weight: 600;
+        font-size: 14px;
+        line-height: 16px;
+        text-transform: capitalize;
+    }
+
+    .filter-button:nth-child(1) {
+        border: 1px solid $Inactive;
+        border-radius: 8px;
+        background-color: $White;
+        color: $Inactive;
+        @include buttonHover($Inactive);
+    }
+
+    .filter-button:nth-child(2) {
+        border: 1px solid $Cyan;
+        border-radius: 8px;
+        background-color: $Cyan;
+        color: $White;
+        @include buttonHover($Cyan);
+    }
+}
+
+
+
+/*==========  Element Rules  ==========*/

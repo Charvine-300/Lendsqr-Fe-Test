@@ -28,6 +28,7 @@ import {
   MenuProps, 
   FeaturesProps,
   TableHeadProps,
+  UserMenuProps
 } from "../../interfaces";
 
 
@@ -82,3 +83,13 @@ export const userTableHeads: TableHeadProps[] = [
   { "id": 5, "title": "date joined" },
   { "id": 6, "title": "status" },
 ]
+
+//Content for the menu in user details page
+export const userMenuItems: UserMenuProps[] = [
+  {"id": 1, "menuItem": "general details"},
+  {"id": 2, "menuItem": "documents"},
+  {"id": 3, "menuItem": "bank details"},
+  {"id": 4, "menuItem": "loans"},
+  {"id": 5, "menuItem": "savings"},
+  {"id": 6, "menuItem": "app and system"},
+];

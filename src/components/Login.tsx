@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import '../assets/styles/index.scss';
+import '../assets/styles/login.scss';
 import Logo from '../assets/images/logo.png';
 import LoginImg from '../assets/images/login_illustration.png';
 import { useForm, SubmitHandler } from 'react-hook-form';
@@ -13,7 +13,7 @@ function Login() {
   //Form validation
   const { register, formState: { errors }, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
-    navigate('/dashboard/users');
+    navigate('/dashboard');
   }
 
   //Stateful variable for controlling password input show/hide feature

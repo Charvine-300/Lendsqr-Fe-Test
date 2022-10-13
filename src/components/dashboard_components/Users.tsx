@@ -1,13 +1,10 @@
-import { useState } from 'react'
-import '../assets/styles/dashboard.scss'
-import { userFeatures } from '../constants'
+import '../../assets/styles/dashboard.scss'
+import { userFeatures } from '../../constants'
 import UserData from './UserData'
 import Pagination from './Pagination'
 
 
 function Users() {
-  const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
-
   return (
     <div className='dashboard-details'>
       <h2> users </h2>

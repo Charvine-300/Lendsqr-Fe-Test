@@ -41,7 +41,7 @@ $InputBorder: rgba(84, 95, 125, 0.15);
 //Styling for status types 
 @mixin statusType($color, $rgb) {
     @include container(fit-content, fit-content, 0);
-    color: $color;
+    color: $color !important;
     border-radius: 100px;
     padding: 10px 15px;
     text-transform: capitalize;

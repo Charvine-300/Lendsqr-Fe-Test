@@ -1,5 +1,6 @@
 import React, { Fragment } from 'react'
 import '../assets/styles/sidebar.scss'
+import { useNavigate } from 'react-router-dom'
 import Logo from '../assets/images/logo.png'
 import Close from '../assets/images/close.png'
 import Briefcase from '../assets/images/menu_icons/briefcase.png'
@@ -14,16 +15,16 @@ import {
 
 type Props = {
   display: string;
-  toggle: any;
 }
 
 
-function Sidebar({ display, toggle }: Props) {
+function Sidebar({ display }: Props) {
+  const navigate = useNavigate();
+
   return (
     <Fragment>
-      <div className="sidebar-wrapper" style={{'display': `${display}`}}>
+      <div className={`sidebar-wrapper ${display}`}>
         <div className="menu">
-          <img src={Close} alt="Close sidebar" id="close" onClick={toggle} />
           <div id="mobile-logo">
             <img src={Logo} alt="Lendsqr logo" className='mobile' />
           </div>
@@ -71,7 +72,15 @@ function Sidebar({ display, toggle }: Props) {
             </div>
             <div>
               {settingMenu.map(item => (
-                <div className="menu-item-flex" key={item.id}>
+                <div 
+                  key={item.id}
+                  className="menu-item-flex" 
+                  onClick={() => {
+                    if (item.name === 'logout') {
+                      navigate('/login');
+                    }
+                  }}
+                >
                   <img src={item.icon} alt={item.name} />
                   <p className='blur-color'> {item.name} </p>
                 </div>

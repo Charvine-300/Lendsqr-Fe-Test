@@ -5,6 +5,10 @@
 /*==========  ID Rules  ==========*/
 #mobile-logo {
     margin: 20px;
+
+    @include desktopView {
+        margin: 0;
+    }
 }
 
 #sidebar {
@@ -28,6 +32,10 @@
     &::-webkit-scrollbar-thumb:hover {    
         background: #888;
     }
+
+    @include desktopView {
+        height: fit-content;
+    }
 }
 
 
@@ -48,7 +56,9 @@
     @include desktopView {
         width: fit-content;
         height: fit-content;
+        display: block !important;
         background-color: transparent;
+        position: relative;
     }
 }
 
@@ -59,7 +69,7 @@
     padding-left: 0px;
 
     @include desktopView {
-        padding: 40px 0px;
+        padding: 20px 0px 40px 0px;
     }
 }
 
@@ -67,7 +77,7 @@
     @include flexboxWrap(row, flex-start, center);
     padding-left: 20px;
     border-left: 6px solid transparent;
-
+    cursor: pointer;
     p {
         font-family: 'Work Sans';
         font-weight: 400;

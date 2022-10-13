@@ -10,13 +10,19 @@
 
 @font-face {
   font-family: 'Avenir Next Bold';
-  src: url('/src/assets/AvenirNextLTPro-Bold.otf');
+  src: url('/src/assets/fonts/AvenirNextLTPro-Bold.otf');
   font-style: normal;
 }
 
 @font-face {
   font-family: 'Avenir Next Regular';
-  src: url('/src/assets/AvenirNextLTPro-Regular.otf');
+  src: url('/src/assets/fonts/AvenirNextLTPro-Regular.otf');
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'SF Compact Text';
+  src: url('/src/assets/fonts/FontsFree-Net-SFCompactText-Regular.ttf');
   font-style: normal;
 }
 
@@ -28,7 +34,7 @@ body, html {
   background-color: #f9f9f9;
 }
 
-input:focus {
+input:focus select:focus {
   outline: none !important;
 }
 

@@ -3,6 +3,15 @@ export interface IFormInput {
     password: string;
 }
 
+export interface FilterFormInput {
+    orgName: string;
+    userName: string;
+    email: string;
+    createdAt: string;
+    phoneNumber: string;
+    status: string;
+}
+
 export interface MenuProps {
     id: number;
     icon: string;
@@ -20,6 +29,11 @@ export interface FeaturesProps {
 export interface TableHeadProps {
     id: number;
     title: string;
+}
+
+export interface UserMenuProps {
+    id: number;
+    menuItem: string;
 }
 
 export interface UserDataProps {

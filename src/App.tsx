@@ -1,15 +1,20 @@
 import { Fragment, useState, useEffect, createContext } from "react"
 import Login from "./components/Login"
-import Homepage from "./components/Homepage"
-import UserDetails from "./components/UserDetails"
+import Homepage from "./components/Dashboard"
+import ScrollToTop from "./components/ScrollToTop"
 import { UserDataProps } from "../interfaces"
 import { Post } from "./api/api"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 
 
 //Initializing context API for user data
-export const UserDataContext = createContext<UserDataProps[] | null>(null);
-export const PageNumberContext = createContext<any | null>(null);
+export const CurrentUsersContext = createContext<UserDataProps[] | null>(null);
+export const UserDataContext = createContext<UserDataProps[] | any>(null);
+export const SetUserDataContext = createContext<any | null>(null);
+export const PageNumberContext = createContext<number | any>(null);
+export const SetPageNumberContext = createContext<any | null>(null);
+export const PerPageContext = createContext<number | any>(null);
+export const SetPerPageContext = createContext<any | null>(null);
 
 
 function App() {
@@ -21,7 +26,7 @@ function App() {
 
   //Stateful variable for creating pagination
   const [currentPage, setCurrentPage] = useState<number>(1);
-  const [usersPerPage] = useState<number>(10);
+  const [usersPerPage, setUsersPerPage] = useState<number>(10);
 
   useEffect(() => {
     //Making request to API to get user data
@@ -32,8 +37,6 @@ function App() {
         data[i].status = statusTypes[random];
       }
       setUserData(data)
-
-      console.log(userData)
     })
     .catch((err) => {
       setIsError(true);
@@ -52,18 +55,28 @@ function App() {
 
   return (
     <Fragment>
-      <UserDataContext.Provider value={currentUsers}>
-        <PageNumberContext.Provider value={setCurrentPage}>
-          <Router>
-            <Routes>
-              <Route path="/" element={<Navigate to='/login' />} />
-              <Route path="/login" element={<Login />} />
-              <Route path='/dashboard/*' element={<Homepage />} />
-              <Route path='/users/:id' element={<UserDetails />} />
-            </Routes>
-          </Router>
-        </PageNumberContext.Provider>
-      </UserDataContext.Provider>
+      <CurrentUsersContext.Provider value={currentUsers}>
+        <UserDataContext.Provider value={userData}>
+          <SetUserDataContext.Provider value={setUserData}>
+            <SetPageNumberContext.Provider value={setCurrentPage}>
+              <PageNumberContext.Provider value={currentPage}>
+                <PerPageContext.Provider value={usersPerPage}>
+                  <SetPerPageContext.Provider value={setUsersPerPage}>
+                    <Router>
+                      <ScrollToTop />
+                      <Routes>
+                        <Route path="/" element={<Navigate to='/login' />} />
+                        <Route path="/login" element={<Login />} />
+                        <Route path='/dashboard/*' element={<Homepage />} />
+                      </Routes>
+                    </Router>
+                  </SetPerPageContext.Provider>
+                </PerPageContext.Provider>
+              </PageNumberContext.Provider>
+            </SetPageNumberContext.Provider>
+          </SetUserDataContext.Provider>
+        </UserDataContext.Provider>
+      </CurrentUsersContext.Provider>
     </Fragment>
   )
 }

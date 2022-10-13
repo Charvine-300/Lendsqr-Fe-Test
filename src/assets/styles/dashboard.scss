@@ -3,16 +3,19 @@
 
 /*==========  ID Rules  ==========*/
 #table-wrapper {
-    @include container(100%, 100%, 20px auto);
+    @include container(100%, fit-content, 20px auto);
     overflow-x: scroll;
+    position: relative;
 
+    &::-webkit-scrollbar {
+        display: none;
+    }
 }
 
 #pagination-wrapper {
-    @include container(fit-content, fit-content, 20px auto);  
+    @include container(fit-content, fit-content, 0px auto);  
     @include flexboxWrap(row, center, center);
     padding: 10px; 
-    padding-bottom: 60px;
 
     .arrow-buttons {
         position: relative;
@@ -51,10 +54,22 @@
 #total-wrapper {
     @include container(fit-content, fit-content, 20px auto);  
     @include flexboxWrap(row, center, center);
-    padding: 10px; 
-    padding-bottom: 60px;  
+    padding: 10px;  
+    
     
     p {
+        font-family: 'Work Sans';
+        font-weight: 500;
+        font-size: 14px;
+        line-height: 16px;
+        color: $DeepBlue;
+        margin: 0;
+    }
+
+    select {
+        @include container(55px, 30px, 0px 10px);
+        background: rgba(33, 63, 125, 0.1);
+        border-radius: 4px;
         font-family: 'Work Sans';
         font-weight: 500;
         font-size: 14px;
@@ -71,11 +86,13 @@
 
 #bottom-details {
     @include flexboxWrap(column, center, center);
-    @include container(100%, fit-content, auto);
+    @include container(100%, fit-content, 0px auto);
+    padding-bottom: 60px;
 
     @include desktopView {
         flex-direction: row;
-        justify-content: space-between
+        justify-content: space-between;
+        padding-bottom: 0px;
     }
 }
 
@@ -109,7 +126,7 @@
     padding: 20px 10px 20px 20px;
     text-transform: uppercase;
     background: $White;
-    border: 1px solid rgba(33, 63, 125, 0.06);
+    border: 1px solid rgba(33, 63, 125, 0.1);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
 
@@ -157,10 +174,10 @@
 }
 
 .users-table {
-    @include container(100%, 100%, 0);
+    @include container(100%, fit-content, 0);
     background: $White;
     padding: 20px;
-    border: 1px solid rgba(33, 63, 125, 0.06);
+    border: 1px solid rgba(33, 63, 125, 0.1);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.04);
     border-radius: 4px;
 
@@ -185,8 +202,13 @@
         }
     }
 
+    tbody {
+        height: fit-content;
+    }
+
     tbody tr {
-        margin: 5px 0px;
+        margin: 15px 0px;
+        height: 60px;
     }
 
     tbody tr td {
