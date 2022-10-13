@@ -7,10 +7,10 @@ Access the web application at: [Lendsqr](https://lendsqr-assessment-chidera-ezen
 
 
 ## Screenshots
+![Web capture_13-10-2022_15413_lendsqr-assessment-chidera-ezenwekwe vercel app](https://user-images.githubusercontent.com/67750953/195659673-2534c231-366f-470a-af8b-db4bb1afa66e.jpeg)
 ![Web capture_13-10-2022_15455_lendsqr-assessment-chidera-ezenwekwe vercel app](https://user-images.githubusercontent.com/67750953/195659584-0d409c8e-2380-4351-bd14-996eb6b3b24d.jpeg)
 ![Web capture_13-10-2022_15438_lendsqr-assessment-chidera-ezenwekwe vercel app](https://user-images.githubusercontent.com/67750953/195659630-90b6d6ef-4099-4672-9bd4-55d1c2e27050.jpeg)
-![Web capture_13-10-2022_15413_lendsqr-assessment-chidera-ezenwekwe vercel app](https://user-images.githubusercontent.com/67750953/195659673-2534c231-366f-470a-af8b-db4bb1afa66e.jpeg)
-![Web capture_13-10-2022_15335_127 0 0 1](https://user-images.githubusercontent.com/67750953/195659763-3400ca0f-31e1-4361-a861-61abd411b508.jpeg)
+
 
 
 ## Technologies
