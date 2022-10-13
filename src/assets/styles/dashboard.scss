@@ -120,7 +120,7 @@
 }
 
 .users-features-flex {
-    @include flexboxWrap(row, space-evenly, center);
+    @include flexboxWrap(row, space-evenly, flex-end);
 
     @include minWidth(1336px) {
         justify-content: space-between;
@@ -129,7 +129,8 @@
 
 .feature {
     @include container(40%, 100%, 10px 0);
-    padding: 20px 10px 20px 20px;
+    min-height: 200px !important;
+    padding: 30px 10px 0px 20px;
     text-transform: uppercase;
     background: $White;
     border: 1px solid rgba(33, 63, 125, 0.1);
@@ -172,6 +173,8 @@
 
     @include landscapeSet {
         width: 40%;
+        min-height: fit-content !important;
+        padding: 20px 10px 20px 20px;
     }
 
     @include minWidth(1336px) {
