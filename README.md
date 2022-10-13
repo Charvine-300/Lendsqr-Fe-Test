@@ -47,7 +47,8 @@ The context of the project is a for lenders to build, launch and scale their len
 * I made use of mixins in SASS to store variables and reusable style rules to ease the complexity of styling.
 * I installed the axios library for the use of making requests to the API
 
-##Credits
+
+## Credits
 
 List of contributors:
 * Me - Chidera Ezenwekwe
