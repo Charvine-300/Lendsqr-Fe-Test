@@ -17,20 +17,7 @@
     overflow-x: hidden;
 
     &::-webkit-scrollbar {
-        width: 7px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: $White;
-    }
-      
-    &::-webkit-scrollbar-thumb {   
-        background: #d1d1d1;
-        border-radius: 5px;
-    }
-      
-    &::-webkit-scrollbar-thumb:hover {    
-        background: #888;
+        display: none;
     }
 
     @include desktopView {
@@ -48,8 +35,22 @@
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
 
+    
     &::-webkit-scrollbar {
-        display: none;
+        width: 7px;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $White;
+    }
+      
+    &::-webkit-scrollbar-thumb {   
+        background: #d1d1d1;
+        border-radius: 5px;
+    }
+      
+    &::-webkit-scrollbar-thumb:hover {    
+        background: #888;
     }
 
 
