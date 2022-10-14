@@ -48,12 +48,4 @@ The context of the project is a for lenders to build, launch and scale their len
 * I installed the axios library for the use of making requests to the API
 
 
-## Credits
-
-List of contributors:
-* Me - Chidera Ezenwekwe
-* YouTube
-* Logrocket Articles
-
-
 
