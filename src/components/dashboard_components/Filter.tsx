@@ -48,6 +48,7 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             <input 
               type="text" 
               id='organisation' 
+              placeholder='Select'
               {...register("orgName", { required: true })} 
               aria-invalid={errors.orgName ? "true" : "false"}
             />
@@ -58,6 +59,7 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             <input 
               type="text" 
               id='username' 
+              placeholder='User'
               {...register("userName", { required: true })} 
               aria-invalid={errors.userName ? "true" : "false"}
             />
@@ -68,16 +70,18 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             <input 
               type="email" 
               id='email' 
+              placeholder='Email'
               {...register("email", { required: true })} 
               aria-invalid={errors.email ? "true" : "false"}
             />
             {errors.email?.type === 'required' && <p className='error' role="alert">This field is required</p>}
           </div>
           <div className="input-bars">
-            <label htmlFor="date"> date </label>
+            <label htmlFor="date"> date </label> <br/>
             <input 
               type="datetime-local" 
               id='date' 
+              placeholder='Date'
               {...register("createdAt", { required: true })} 
               aria-invalid={errors.createdAt ? "true" : "false"}
             />
@@ -88,6 +92,7 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             <input 
               type="tel" 
               id='phoneNumber' 
+              placeholder='Phone Number'
               {...register("phoneNumber", { required: true })} 
               aria-invalid={errors.phoneNumber ? "true" : "false"}
             />    
@@ -98,6 +103,7 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
             <input 
               type="status" 
               id='status' 
+              placeholder='Select'
               {...register("status", { required: true })} 
               aria-invalid={errors.status ? "true" : "false"}
             />

@@ -87,7 +87,7 @@ function UserDetails({}: Props) {
 
           <div className="menu-wrapper">
               {userMenuItems.map(item => (
-                <div className="menu-item" key={item.id} style={{'borderBottom': menuSelected === item.id ? '2px solid #39CDCC' : 'none'}}>
+                <div className="menu-item" key={item.id} style={{'borderBottom': menuSelected === item.id ? '3px solid #39CDCC' : 'none'}}>
                   <p 
                     onClick={() => setMenuSelected(item.id)}
                     style={{'color': menuSelected === item.id ? '#39CDCC' : '	#000000',}}
@@ -103,7 +103,7 @@ function UserDetails({}: Props) {
         <div className="user-details" style={{'paddingBottom': '40px'}}>
           <div className="general-details-wrapper">
             <div className="details">
-              <h5> personal information </h5>
+              <h5> Personal Information </h5>
               <div className='info-section'>
                 <div>
                   <p> full name </p>
@@ -136,7 +136,7 @@ function UserDetails({}: Props) {
               </div>
             </div>
             <div className="details">
-              <h5> education and employment </h5>
+              <h5> Education and Employment </h5>
               <div className='info-section'>
                 <div>
                   <p> level of education </p>
@@ -169,7 +169,7 @@ function UserDetails({}: Props) {
               </div>
             </div>
             <div className="details">
-              <h5> socials </h5>
+              <h5> Socials </h5>
               <div className="info-section">
                 <div>
                   <p> twitter </p>
@@ -186,7 +186,7 @@ function UserDetails({}: Props) {
               </div>
             </div>
             <div className="details">
-              <h5> guarantor </h5>
+              <h5> Guarantor </h5>
               <div className="info-section">
                 <div>
                   <p> full name </p>

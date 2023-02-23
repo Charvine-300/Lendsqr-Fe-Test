@@ -34,10 +34,11 @@
     z-index: 3;
     position: fixed;
     background-color: rgba(0, 0, 0, 0.4);
+    box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.04);
 
     
     &::-webkit-scrollbar {
-        width: 7px;
+        width: 0px;
     }
 
     &::-webkit-scrollbar-track {
@@ -45,12 +46,12 @@
     }
       
     &::-webkit-scrollbar-thumb {   
-        background: #d1d1d1;
+        background: $White;
         border-radius: 5px;
     }
       
     &::-webkit-scrollbar-thumb:hover {    
-        background: #888;
+        background: $White;
     }
 
 
@@ -88,6 +89,10 @@
         color: $DeepBlue;
         padding: 0px 10px;
         text-transform: capitalize;
+    }
+
+    img {
+        @include container(17.5px, 16px, 0);
     }
 
     .blur-color {

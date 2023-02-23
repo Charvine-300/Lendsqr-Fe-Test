@@ -5,7 +5,7 @@
 /*==========  ID Rules  ==========*/
 #login-wrapper {
     min-height: 100vh;
-    @include flexboxWrap(column, center, center);
+    @include flexboxWrap(column, normal, center);
 
     @include desktopView {
         background: linear-gradient(to right, $Dashboard 50%, $White 50%);
@@ -27,26 +27,24 @@
         img {
             display: block;
             margin: auto;
+            margin-left: 67px;
+            
         }
     }
 }
 
 #relative-wrapper {
-    @include container(70%, 100%, 0);
     position: relative;
-
-    input {
-        width: 100%;
-    }
+    @include container(fit-content, fit-content, 0);
 
     .show-password {
         height: fit-content;
         position: absolute;
-        right: -20px;
-        top: 0;
-        bottom: 0;
-        margin-top: auto;
-        margin-bottom: auto;
+        right: 19.5px;
+        top: 18px;
+        //bottom: 0;
+        //margin-top: auto;
+        ///margin-bottom: auto;
         cursor: pointer;
     }
 }
@@ -56,15 +54,23 @@
 /*==========  Class Rules  ==========*/
 .logo {
     @include container(fit-content, fit-content, 50px auto);
+    position: absolute;
+
+    img {
+        @include container(173.77px, 36px, 0);
+    }
 
     @include desktopView {
-       margin: 30px 0 80px 5%;
+        top: 105px;
+        left: 98px;
+        margin: 0;
+        //margin: 106px 0 80px 97px;
     }
 }
 
 
 .login-form {
-    @include container(100%, 100%, auto);
+    @include container(100%, 100%, 180px auto 0px auto);
     @include flexboxWrap(row, center, center); 
     
 
@@ -76,10 +82,12 @@
 }
 
 .form-wrapper {
-    @include container(100%, 100%, auto);
+    @include container(100%, 100%, 0);
+    position: relative;
+    padding: 0;
 
     .input-wrapper {
-        @include container(75%, 100%, auto);
+        @include container(75%, 100%, auto auto auto 100px);
 
         
         #details {
@@ -87,13 +95,15 @@
             font-size: 20px;
             color: $Inactive;
             margin: 0;
+            line-height: 27.32px;
         }
     
         h1 {
             color: $DeepBlue;
             font-family: 'Avenir Next Bold';
             font-size: 40px;
-            margin: 15px 0px;
+            line-height: 54.64px;
+            margin: 10px 0px;
         }
     }
 
@@ -108,14 +118,15 @@
             font-size: 12px;
             line-height: 16px;
             letter-spacing: 0.1em;
+            margin-top: 9px;
             cursor: pointer;
         }
 
         input {
-            @include container(70%, 50px, 10px auto);
+            @include container(427.8px, 46.8px, 10px auto 15px auto);
             font-family: 'Avenir Next Regular';
             color: $DeepBlue;
-            padding: 0px 20px;
+            padding:0px 0px 0px 16px;
             font-size: 14px;
             border: 2px solid $InputBorder;
             background: $White;
@@ -171,5 +182,14 @@
             width: 77%;
             margin: 40px 0;
         }
+    }
+
+    @include desktopView {
+        .log-in {
+            @include container(447px, 50px, 0);
+            margin-top: 20px;
+        }
+     
+
     }
 }

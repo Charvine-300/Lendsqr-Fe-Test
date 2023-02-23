@@ -17,6 +17,9 @@ export const PerPageContext = createContext<number | any>(null);
 export const SetPerPageContext = createContext<any | null>(null);
 export const IsError = createContext<boolean | any>(null);
 export const IsLoading = createContext<boolean | any>(null);
+export const FilterToggle = createContext<string | any>(null);
+export const SetFilterToggle = createContext<any | null>(null);
+export const FilterFormToggleFunc = createContext<any | null>(null);
 
 function App() {
     //Creating an array of status types to pick at random for each user
@@ -57,10 +60,22 @@ function App() {
 
   //Slicing through user data
   const currentUsers = userData.slice(firstPostIndex, lastPostIndex);
+
+  const [filterToggle, setFilterToggle] = useState<string>('none');
+
+  const FilterFormToggle = () => {
+    if (filterToggle === 'none') {
+      setFilterToggle('block');
+    }
+
+    else {
+      setFilterToggle('none');
+    }
+  }
   
 
   return (
-    <Fragment>
+    <div onClick={FilterFormToggle}>
       <CurrentUsersContext.Provider value={currentUsers}>
         <UserDataContext.Provider value={userData}>
           <SetUserDataContext.Provider value={setUserData}>
@@ -70,14 +85,20 @@ function App() {
                   <SetPerPageContext.Provider value={setUsersPerPage}>
                     <IsError.Provider value={isError}>
                       <IsLoading.Provider value={isLoading}>
-                        <Router>
-                          <ScrollToTop />
-                          <Routes>
-                            <Route path="/" element={<Navigate to='/login' />} />
-                            <Route path="/login" element={<Login />} />
-                            <Route path='/dashboard/*' element={<Homepage />} />
-                          </Routes>
-                        </Router>
+                        <FilterToggle.Provider value={filterToggle}>
+                          <FilterFormToggleFunc.Provider value={FilterFormToggle}>
+                            <SetFilterToggle.Provider value={setFilterToggle}>
+                              <Router>
+                                <ScrollToTop />
+                                <Routes>
+                                  <Route path="/" element={<Navigate to='/login' />} />
+                                  <Route path="/login" element={<Login />} />
+                                  <Route path='/dashboard/*' element={<Homepage />} />
+                                </Routes>
+                              </Router>
+                            </SetFilterToggle.Provider>
+                          </FilterFormToggleFunc.Provider>
+                       </FilterToggle.Provider>
                       </IsLoading.Provider>
                     </IsError.Provider>
                   </SetPerPageContext.Provider>
@@ -87,7 +108,7 @@ function App() {
           </SetUserDataContext.Provider>
         </UserDataContext.Provider>
       </CurrentUsersContext.Provider>
-    </Fragment>
+    </div>
   )
 }
 

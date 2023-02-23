@@ -60,7 +60,7 @@ function Login() {
                 />
                 {errors.email?.type === 'required' && <p className='error' role="alert">Email is required</p>}
 
-                <div id="relative-wrapper">
+                <section id="relative-wrapper">
                   <p 
                     className="show-password"
                     onClick={passwordToggle}
@@ -73,7 +73,7 @@ function Login() {
                     aria-invalid={errors.password ? "true" : "false"} 
                     type={togglePassword === false ? 'password' : 'text'} 
                   />
-                </div>
+                </section>
                 {errors.password?.type === 'required' && <p className='error' role="alert">Password is required</p>}
 
                 <p> forgot password? </p>

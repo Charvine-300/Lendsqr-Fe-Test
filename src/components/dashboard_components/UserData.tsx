@@ -5,11 +5,18 @@ import '../../assets/styles/dashboard.scss'
 import FilterImg from '../../assets/images/filter.png'
 import Options from '../../assets/images/options.png'
 import { userTableHeads } from '../../constants'
-import { CurrentUsersContext, IsError, IsLoading } from '../../App'
 import Filter from './Filter'
 import ViewDetails from '../../assets/images/view.png'
 import BlacklistUser from '../../assets/images/blacklist.png'
 import ActivateUser from '../../assets/images/activate.png'
+import { 
+  CurrentUsersContext, 
+  IsError, 
+  IsLoading, 
+  FilterToggle, 
+  FilterFormToggleFunc, 
+  SetFilterToggle 
+} from '../../App'
 
 
 
@@ -23,12 +30,16 @@ function UserData({}: Props) {
   const loading = useContext(IsLoading);
   const error = useContext(IsError);
 
+  //Filter Component Toggle 
+  const filterToggle = useContext(FilterToggle);
+  const filterFormToggle = useContext(FilterFormToggleFunc);
+  const setFilterToggle = useContext(SetFilterToggle);
+
+
   //Stateful variables to toggle user options
   const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
   const [userID, setUserID] = useState<number>(0);
 
-  //Stateful variable for filter form toggle
-  const [filterToggle, setFilterToggle] = useState<string>('none');
   
   //Stateful variable to trigger re-render with blacklist.activate user feature
   const [optionSelect, setOptionSelect] = useState<number>(1);
@@ -42,16 +53,6 @@ function UserData({}: Props) {
 
     else {
       setOptionsToggle(false);
-    }
-  }
-
-  const FilterFormTOggle = () => {
-    if (filterToggle === 'none') {
-      setFilterToggle('block');
-    }
-
-    else {
-      setFilterToggle('none');
     }
   }
 
@@ -84,7 +85,7 @@ function UserData({}: Props) {
             {userTableHeads.map(head => (
               <th key={head.id}> 
                 {head.title}
-                <img src={FilterImg} alt={`${head.title} Filter`} onClick={FilterFormTOggle} />
+                <img src={FilterImg} alt={`${head.title} Filter`} onClick={filterFormToggle} />
               </th>
             ))}
           </tr>

@@ -14,21 +14,12 @@
     border-radius: 4px;
 
     &::-webkit-scrollbar {
-        height: 5px;
-        width: 5px;
+        height: 0px;
+        width: 0px;
     }
 
-    &::-webkit-scrollbar-track {
-        background: $White;
-    }
-      
-    &::-webkit-scrollbar-thumb {   
-        background: #d1d1d1;
-        border-radius: 5px;
-    }
-      
-    &::-webkit-scrollbar-thumb:hover {    
-        background: #888;
+    @include desktopView {
+        @include container(980px, fit-content, 20px 0);
     }
 }
 
@@ -117,6 +108,7 @@
         flex-direction: row;
         justify-content: space-between;
         padding-bottom: 0px;
+        margin-left: -30px;
     }
 }
 
@@ -134,12 +126,12 @@
     float: right;
 
     @include desktopView {
-        @include container(65%, 100%, 20px 5%);
-        right: 0;
+        @include container(65%, 100%, 20px auto);
+        right: 50px;
     }
 
     @include minWidth(1336px) {
-        @include container(75%, 100%, 20px 2.5%);
+        @include container(75%, 100%, 20px auto);
     }
 }
 
@@ -147,7 +139,11 @@
     @include flexboxWrap(row, space-evenly, flex-end);
 
     @include minWidth(1336px) {
-        justify-content: space-between;
+        justify-content: normal;
+
+        .feature:nth-child(4) {
+            margin-right: 0;
+        }
     }
 }
 
@@ -182,6 +178,7 @@
         font-family: 'Work Sans';
         font-weight: 500;
         font-size: 14px;
+        line-height: 14.46px;
         color: $Inactive;
     }
 
@@ -192,7 +189,7 @@
         font-size: 24px;
         color: $DeepBlue;
         margin: 10px 0;
-       
+       line-height: 28.15px;
     }
 
     @include landscapeSet {
@@ -202,12 +199,17 @@
     }
 
     @include minWidth(1336px) {
-        width: 20%;
+        @include container(208.4px, 120px, 10px 26px 10px 0);
+
+        div {
+            @include container(30px, 30px, 0);
+        }
     }
 }
 
 .users-table {
     @include container(100%, fit-content, 0);
+    border-collapse: collapse;
 
     thead {
         height: 70px;
@@ -236,6 +238,7 @@
 
     tbody tr {
         margin: 15px 0px;
+        border-bottom: 1px solid rgba(33, 63, 125, 0.1);
         height: 60px !important;
     }
 
@@ -247,6 +250,10 @@
         color: $Inactive;
         position: relative;
         padding-right: 15px
+    }
+
+    tbody tr td:nth-child(7) {
+        padding-right: 0;
     }
 }
 

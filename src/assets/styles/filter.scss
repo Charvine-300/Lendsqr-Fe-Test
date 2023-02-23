@@ -10,7 +10,7 @@
 /*==========  Class Rules  ==========*/
 .filter-wrapper {
     @include container(270px, fit-content, 0);
-    padding: 15px;
+    padding: 15px 0;
     position: absolute;
     z-index: 2;
     top: 75px;
@@ -22,7 +22,8 @@
 }
 
 .input-bars {
-    margin: 10px auto;
+    width: fit-content;
+    margin: 10px 20px;
     font-family: 'Work Sans';
 
     label {
@@ -35,8 +36,8 @@
     }
 
     input {
-        @include container(85%, 30px, 10px 0);
-        padding: 0 5%;
+        @include container(188.4px, 38.4px, 10px 0);
+        padding: 0 20px;
         background: $White;
         border: 1px solid rgba(33, 63, 125, 0.2);
         border-radius: 8px;
@@ -44,10 +45,26 @@
         font-size: 14px;
         line-height: 16px;
         color: $Inactive;
+
+        &:focus {
+            outline: none;
+            border: 1px solid $Cyan;
+        }
+
+        &::placeholder {
+            color: $Inactive;
+            font-family: 'Work Sans';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            line-height: 16px;
+
+opacity: 0.7;
+        }
     }
 
     .filter-button {
-        @include container(98px, 40px, 10px 10px 0 10px);
+        @include container(98px, 40px, 10px 5px 0 10px);
         font-family: 'Work Sans';
         font-weight: 600;
         font-size: 14px;

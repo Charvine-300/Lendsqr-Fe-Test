@@ -54,7 +54,7 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
     <Fragment>
       <header>
         <div className="header-items">
-          <img src={Logo} alt="Comapny Logo" className='desktop' />
+          <img src={Logo} alt="Comapny Logo" className='desktop header-logo' />
           <img 
             src={menuImg} 
             alt="Lendsqr logo" 

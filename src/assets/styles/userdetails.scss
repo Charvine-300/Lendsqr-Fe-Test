@@ -76,7 +76,9 @@
 
 .user-details {
     @include container(90%, fit-content, 25px auto);
+    min-height: 240px;
     background: $White;
+    position: relative;
     border: 1px solid rgba(33, 63, 125, 0.06);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
     border-radius: 4px;
@@ -100,7 +102,6 @@
                 line-height: 19px;
                 color: $DeepBlue;
                 margin: 20px 0px;
-                text-transform: capitalize;
             }
 
             .info-section {
@@ -268,32 +269,24 @@
 
 
 .menu-wrapper {
-    @include container(100%, 100%, 20px auto);
+    @include container(100%, fit-content, 20px auto);
     margin-bottom: 0px;
     @include flexboxWrap(row, flex-start, center);
     flex-wrap: nowrap;
     overflow-x: scroll;
+    position: absolute;
+    bottom: -1.2px;
+    z-index: 9;
 
     &::-webkit-scrollbar {
-        height: 3px;
-    }
-
-    &::-webkit-scrollbar-track {
-        background: $White;
-    }
-      
-    &::-webkit-scrollbar-thumb {   
-        background: #d1d1d1;
-        border-radius: 5px;
-    }
-      
-    &::-webkit-scrollbar-thumb:hover {    
-        background: #888;
+        height: 0px;
     }
 
     .menu-item {
         min-width: 150px;
         cursor: pointer;
+        margin-bottom: -0.5px;
+        z-index: 9;
 
         p {
             font-family: 'SF Compact Text';
