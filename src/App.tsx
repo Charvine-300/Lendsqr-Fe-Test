@@ -72,10 +72,16 @@ function App() {
       setFilterToggle('none');
     }
   }
+
+  const closeFilterForm = () => {
+    if (filterToggle === 'block') {
+      setFilterToggle('none');
+    }
+  }
   
 
   return (
-    <div onClick={FilterFormToggle}>
+    <div onClick={closeFilterForm}>
       <CurrentUsersContext.Provider value={currentUsers}>
         <UserDataContext.Provider value={userData}>
           <SetUserDataContext.Provider value={setUserData}>
