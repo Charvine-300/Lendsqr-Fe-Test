@@ -33,7 +33,7 @@ function Sidebar({ display }: Props) {
             <div className="menu-item-flex" style={{'marginBottom': '20px'}}>
               <img src={Briefcase} alt="Switch Organisation" />
               <p> switch organisation </p>
-              <img src={Arrow} alt="Arrow icon" />
+              <img src={Arrow} alt="Arrow icon" id='arrow' />
             </div>
             <div className="menu-item-flex" style={{'marginBottom': '20px'}}>
               <img src={Home} alt="Dashboard" />

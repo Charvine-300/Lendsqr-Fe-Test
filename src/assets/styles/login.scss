@@ -5,10 +5,15 @@
 /*==========  ID Rules  ==========*/
 #login-wrapper {
     min-height: 100vh;
-    @include flexboxWrap(column, normal, center);
+    @include flexboxWrap(column, center, center);
 
     @include desktopView {
+       
         background: linear-gradient(to right, $Dashboard 50%, $White 50%);
+    }
+
+    @include minWidth(1336px) {
+        @include flexboxWrap(column, normal, center);
     }
 }
 
@@ -23,12 +28,18 @@
 
     @include desktopView {
         display: block;
+        
 
         img {
             display: block;
             margin: auto;
+        }
+    }
+
+    @include minWidth(1336px) {
+        img {
+            @include container(600px, 337.57px, 0);
             margin-left: 67px;
-            
         }
     }
 }
@@ -40,12 +51,31 @@
     .show-password {
         height: fit-content;
         position: absolute;
-        right: 19.5px;
-        top: 18px;
-        //bottom: 0;
-        //margin-top: auto;
-        ///margin-bottom: auto;
+        right: 10%;
+        top: 30px;
+        margin-top: auto;
+        margin-bottom: auto;
         cursor: pointer;
+    }
+
+    @include landscapeSet {
+        .show-password {
+            right: 0;
+        }
+    }
+
+    @include minWidth(1024px) {
+        .show-password {
+            right: 40px;
+            top: 30px;
+        }
+    }
+
+    @include minWidth(1336px) {
+        .show-password {
+            right: 19.5px !important;
+            top: 29.5px !important;
+        }
     }
 }
 
@@ -53,41 +83,50 @@
 
 /*==========  Class Rules  ==========*/
 .logo {
-    @include container(fit-content, fit-content, 50px auto);
+    @include container(fit-content, fit-content, 30px auto);
     position: absolute;
+    left: 50%;
+    top: 50px;
+    transform: translate(-50%, -50%);
 
     img {
         @include container(173.77px, 36px, 0);
     }
 
     @include desktopView {
-        top: 105px;
+        top: 106px;
         left: 98px;
         margin: 0;
-        //margin: 106px 0 80px 97px;
+        transform: translate(0%, 0%);
+    }
+
+    @include dynamicQueries(1024px, 1335px) {
+        left: 30px;
     }
 }
 
 
 .login-form {
-    @include container(100%, 100%, 180px auto 0px auto);
-    @include flexboxWrap(row, center, center); 
+    @include container(100%, fit-content, 100px auto);
+    @include flexboxWrap(row, center, flex-end);
     
 
     @include desktopView {
+        margin: 220px auto 0px auto;
+
         div {
-            @include container(50%, 100%, auto);
+            @include container(50%, fit-content, 0);
         }
     }
 }
 
 .form-wrapper {
-    @include container(100%, 100%, 0);
+    @include container(100%, 100%, 20px auto);
     position: relative;
     padding: 0;
 
     .input-wrapper {
-        @include container(75%, 100%, auto auto auto 100px);
+        @include container(75%, 100%, auto);
 
         
         #details {
@@ -96,6 +135,7 @@
             color: $Inactive;
             margin: 0;
             line-height: 27.32px;
+            text-align: left;
         }
     
         h1 {
@@ -104,6 +144,7 @@
             font-size: 40px;
             line-height: 54.64px;
             margin: 10px 0px;
+            text-align: left;
         }
     }
 
@@ -123,7 +164,6 @@
         }
 
         input {
-            @include container(427.8px, 46.8px, 10px auto 15px auto);
             font-family: 'Avenir Next Regular';
             color: $DeepBlue;
             padding:0px 0px 0px 16px;
@@ -161,35 +201,98 @@
         cursor: pointer;
     }
 
-
-    @include maxWidth(1024px) {
-        form input, #relative-wrapper, .log-in {
-            width: 80%;
-        }
-
-        .log-in {
-            display: block;
-            margin: 40px auto;
-        }
-
+    @include maxWidth(1023px) {
         h1, #details {
-            text-align: center;
+            text-align: center !important;
         }
     }
 
-    @include landscapeSet {
+    @include maxWidth(1024px) {
+        form input {
+            @include container(90%, 50px, 10px auto 15px auto);
+        }
+
+        #relative-wrapper {
+            width: 100%;
+        }
+
         .log-in {
-            width: 77%;
+            width: 93%;
+            display: block;
             margin: 40px 0;
         }
     }
 
-    @include desktopView {
+    @include landscapeSet {
+        form input, .log-in {
+            width: 100%;
+        }
+
         .log-in {
-            @include container(447px, 50px, 0);
+            width: 106%;
+            margin-left: 0;
+        }
+
+        form {
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        
+
+    }
+
+    @include desktopView {
+        @include container(100vw, 100vh, 0);
+        margin: 0 auto;
+
+        
+        .log-in {
+            @include container(95%, 50px, 0);
             margin-top: 20px;
         }
-     
+       
 
+        form {
+            @include container(100%, 100%, 0);
+
+            input {
+                @include container(90%, 46.8px, 10px auto 15px auto);
+            }
+        
+        }
+
+        #relative-wrapper {
+            width: 100%;
+        }
+     
+        #details {
+            margin-bottom: 50px !important;
+        }
+
+    }
+
+    @include minWidth(1336px) {
+        .input-wrapper {
+            margin: auto auto auto 100px;
+        }
+
+        form {
+            @include container(100%, 100%, 0);
+            
+            input {
+                @include container(427.8px, 46.8px, 10px auto 15px auto);
+            }
+
+            .log-in {
+                @include container(447px, 50px, 0);
+                margin-top: 20px;
+            }
+        }
+
+        #relative-wrapper {
+            width: fit-content;
+        }
     }
 }

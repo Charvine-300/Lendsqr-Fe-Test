@@ -18,7 +18,7 @@
         width: 0px;
     }
 
-    @include desktopView {
+    @include minWidth(1336px) {
         @include container(980px, fit-content, 20px 0);
     }
 }
@@ -199,7 +199,7 @@
     }
 
     @include minWidth(1336px) {
-        @include container(208.4px, 120px, 10px 26px 10px 0);
+        @include container(208.4px, 118.4px, 10px 26px 10px 0);
 
         div {
             @include container(30px, 30px, 0);

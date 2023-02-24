@@ -58,8 +58,16 @@
         }
     }
 
+    @include minWidth(1024px) {
+        margin-left: 130px;
 
-    @include desktopView {
+        input {
+            width: 300px;
+        }
+    }
+
+
+    @include minWidth(1336px) {
         margin-left: 160.2px;
 
         input {
@@ -102,6 +110,10 @@
     img, .docs, .user-items {
         cursor: pointer;
     }
+
+    @include maxWidth(1023px) {
+        justify-content: space-between;
+    }
     
     @include desktopView {
         width: 95%;
@@ -124,7 +136,6 @@
     }
 
     @include desktopView {
-        margin-left: 357px;
 
         .docs {
             font-family: 'Roboto';
@@ -137,7 +148,16 @@
         }
 
     }
+
+    @include minWidth(1024px) {
+        margin-left: 80px;
+    }
+
+    @include minWidth(1336px) {
+        margin-left: 357px;
+    }
 }
+
 
 
 

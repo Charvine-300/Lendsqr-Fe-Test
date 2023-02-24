@@ -76,7 +76,6 @@
 
 .user-details {
     @include container(90%, fit-content, 25px auto);
-    min-height: 240px;
     background: $White;
     position: relative;
     border: 1px solid rgba(33, 63, 125, 0.06);
@@ -274,7 +273,6 @@
     @include flexboxWrap(row, flex-start, center);
     flex-wrap: nowrap;
     overflow-x: scroll;
-    position: absolute;
     bottom: -1.2px;
     z-index: 9;
 

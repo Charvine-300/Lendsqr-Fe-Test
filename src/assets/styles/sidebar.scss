@@ -3,6 +3,10 @@
 
 
 /*==========  ID Rules  ==========*/
+#arrow {
+    @include container(12px, 8px, 0);
+}
+
 #mobile-logo {
     margin: 20px;
 
@@ -68,7 +72,7 @@
 .menu {
     @include container(280px, fit-content, 0);
     background-color: $White;
-    padding: 20px 0px 60px 0px;
+    padding: 80px 0px 60px 0px;
     padding-left: 0px;
 
     @include desktopView {
