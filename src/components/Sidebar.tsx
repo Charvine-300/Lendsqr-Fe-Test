@@ -1,11 +1,12 @@
 import React, { Fragment } from 'react'
+import { Link } from 'react-router-dom'
 import '../assets/styles/sidebar.scss'
 import { useNavigate } from 'react-router-dom'
-import Logo from '../assets/images/logo.png'
+import Logo from '../assets/images/logo.svg'
 import Close from '../assets/images/close.png'
-import Briefcase from '../assets/images/menu_icons/briefcase.png'
-import Home from '../assets/images/menu_icons/home.png'
-import Arrow from '../assets/images/menu_icons/sidebar_arrow.png'
+import Briefcase from '../assets/images/menu_icons/briefcase.svg'
+import Home from '../assets/images/menu_icons/home.svg'
+import Arrow from '../assets/images/menu_icons/sidebar_arrow.svg'
 import { 
   customerMenu,
   businessMenu,
@@ -35,10 +36,12 @@ function Sidebar({ display }: Props) {
               <p> switch organisation </p>
               <img src={Arrow} alt="Arrow icon" id='arrow' />
             </div>
-            <div className="menu-item-flex" style={{'marginBottom': '20px'}}>
-              <img src={Home} alt="Dashboard" />
-              <p className='blur-color'> dashboard </p>
-            </div>
+            <Link to='/dashboard'>
+              <div className="menu-item-flex" style={{'marginBottom': '20px'}}>
+                <img src={Home} alt="Dashboard" />
+                <p className='blur-color'> dashboard </p>
+              </div>
+            </Link>
 
             {/* Customers Menu items */}
             <div className="menu-list">
@@ -46,10 +49,12 @@ function Sidebar({ display }: Props) {
             </div>
             <div>
               {customerMenu.map(item => (
-                <div className="menu-item-flex" key={item.id}>
-                  <img src={item.icon} alt={item.name} />
-                  <p className='blur-color'> {item.name} </p>
-                </div>
+                <Link to={`/${item.name.split(" ").join("_")}`} key={item.id}>
+                  <div className="menu-item-flex">
+                    <img src={item.icon} alt={item.name} />
+                    <p className='blur-color'> {item.name} </p>
+                  </div>
+                </Link>
               ))}
             </div>
 
@@ -59,10 +64,12 @@ function Sidebar({ display }: Props) {
             </div>
             <div>
               {businessMenu.map(item => (
-                <div className="menu-item-flex" key={item.id}>
-                  <img src={item.icon} alt={item.name} />
-                  <p className='blur-color'> {item.name} </p>
-                </div>
+                <Link to={`/${item.name.split(" ").join("_")}`} key={item.id}>
+                  <div className="menu-item-flex">
+                    <img src={item.icon} alt={item.name} />
+                    <p className='blur-color'> {item.name} </p>
+                  </div>
+                </Link>
               ))}
             </div>
 
@@ -72,22 +79,23 @@ function Sidebar({ display }: Props) {
             </div>
             <div>
               {settingMenu.map(item => (
-                <div 
-                  key={item.id}
-                  className="menu-item-flex" 
-                  onClick={() => {
-                    if (item.name === 'logout') {
-                      navigate('/login');
-                    }
-                  }}
+                <Link to={
+                  item.name === 'logout' ?
+                  `/` :
+                  `/${item.name.split(" ").join("_")}`} key={item.id}
                 >
-                  <img src={item.icon} alt={item.name} />
-                  <p className='blur-color'> {item.name} </p>
-                </div>
+                  <div className="menu-item-flex">
+                    <img src={item.icon} alt={item.name} />
+                    <p className='blur-color'> {item.name} </p>
+                  </div>
+                </Link>
               ))}
             </div>
-          </div>
 
+            {/*Version Number */}
+            <p className="version-number"> v1.2.0 </p>
+
+          </div>
         </div>
       </div>
     </Fragment>

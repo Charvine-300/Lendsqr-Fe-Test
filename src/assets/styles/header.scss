@@ -4,17 +4,34 @@
 
 
 /*==========  ID Rules  ==========*/
-#hamburger, #close {
-    @include container(40px, 40px, 0);
+#mobile-search-bar {
+    @include desktopView {
+        display: none !important;
+    }
 }
 
-#close {
-    display: block;
-    //margin-left: auto;
-    margin-left: 20px;
+#desktop-header-logo {
+
+    @include desktopView {
+        width: 30.5%;
+    }
+
+    @include minWidth(1180px) {
+        width: 26%;
+        
+    }
+
+    @include minWidth(1336px) {
+        @include container(20.45%, fit-content, 0);
+    }
 }
 
-#search-bar {
+
+
+
+
+/*==========  Class Rules  ==========*/
+.search-bar {
     @include container(fit-content, fit-content, 0);
     position: relative;
 
@@ -59,7 +76,6 @@
     }
 
     @include minWidth(1024px) {
-        margin-left: 130px;
 
         input {
             width: 300px;
@@ -68,7 +84,6 @@
 
 
     @include minWidth(1336px) {
-        margin-left: 160.2px;
 
         input {
             width: 400px;
@@ -76,9 +91,6 @@
     }
 }
 
-
-
-/*==========  Class Rules  ==========*/
 .desktop {
     @include maxWidth(1023px) {
         display: none !important;
@@ -92,7 +104,7 @@
 }
 
 .search-mobile {
-    margin: 20px auto 0px auto !important;
+    margin: 0px auto 0px auto !important;
 
     input {
         width: 300px !important;
@@ -113,10 +125,18 @@
 
     @include maxWidth(1023px) {
         justify-content: space-between;
+
+        img {
+            @include container(27px, 27px, 0);
+        }
     }
     
     @include desktopView {
         width: 95%;
+    }
+
+    @include minWidth(1336px) {
+        width: 96.5%;
     }
 
 }
@@ -136,6 +156,8 @@
     }
 
     @include desktopView {
+        margin-left: auto;
+        margin-right: 0;
 
         .docs {
             font-family: 'Roboto';
@@ -149,13 +171,13 @@
 
     }
 
-    @include minWidth(1024px) {
-        margin-left: 80px;
-    }
+    
+}
 
-    @include minWidth(1336px) {
-        margin-left: 357px;
-    }
+.mobile-search-wrapper {
+    @include container(100%, 51px, 0px);
+    background-color: $White;
+    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -163,10 +185,10 @@
 
 /*==========  Element Rules  ==========*/
 header {
-    @include container(100%, fit-content, 0px);
+    @include container(100%, 51px, 0px);
     position: fixed;
     background-color: $White;
-    padding: 15px 0px;
+    padding: 12px 0px;
     z-index: 100;
     box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.2);
 

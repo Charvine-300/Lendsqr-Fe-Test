@@ -3,9 +3,9 @@ import { useNavigate, useParams } from 'react-router-dom'
 import React, { useEffect, useState } from 'react'
 import { UserDataProps } from '../../interfaces'
 import { userMenuItems } from '../constants'
-import StarOn from '../assets/images/star_on.png'
-import StarOff from '../assets/images/star_off.png'
-import DashboardArrow from '../assets/images/back_to_users.png'
+import StarOn from '../assets/images/star_on.svg'
+import StarOff from '../assets/images/star_off.svg'
+import DashboardArrow from '../assets/images/back_to_users.svg'
 
 
 type Props = {}
@@ -128,10 +128,6 @@ function UserDetails({}: Props) {
                 <div>
                   <p> address </p>
                   <h6> {userDetails?.profile.address} </h6>
-                </div>
-                <div>
-                  <p> status </p>
-                  <h6 className={userDetails?.status}> {userDetails?.status} </h6>
                 </div>
               </div>
             </div>

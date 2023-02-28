@@ -19,14 +19,14 @@
     }
 
     @include minWidth(1336px) {
-        @include container(980px, fit-content, 20px 0);
+        margin: 20px 0;
     }
 }
 
 #pagination-wrapper {
     @include container(fit-content, fit-content, 0px auto);  
     @include flexboxWrap(row, center, center);
-    padding: 10px; 
+    padding: 10px 0; 
 
     .arrow-buttons {
         position: relative;
@@ -70,10 +70,10 @@
     
     p {
         font-family: 'Work Sans';
-        font-weight: 500;
+        font-weight: 400;
         font-size: 14px;
         line-height: 16px;
-        color: $DeepBlue;
+        color: $Inactive;
         margin: 0;
     }
 
@@ -108,7 +108,6 @@
         flex-direction: row;
         justify-content: space-between;
         padding-bottom: 0px;
-        margin-left: -30px;
     }
 }
 
@@ -120,36 +119,32 @@
 }
 
 .dashboard-details {
-    @include container(90%, 100%, 40px 5%);
+    @include container(90%, 100%, 20px 5%);
     position: relative;
     top: 90px;
     float: right;
 
     @include desktopView {
         @include container(65%, 100%, 20px auto);
-        right: 50px;
+        right: 30px;
+    }
+
+    @include minWidth(1180px) {
+        @include container(70%, 100%, 20px auto);
     }
 
     @include minWidth(1336px) {
-        @include container(75%, 100%, 20px auto);
+        @include container(77%, 100%, 20px auto);
+        right: 25px;
     }
 }
 
 .users-features-flex {
-    @include flexboxWrap(row, space-evenly, flex-end);
-
-    @include minWidth(1336px) {
-        justify-content: normal;
-
-        .feature:nth-child(4) {
-            margin-right: 0;
-        }
-    }
+    @include flexboxWrap(row, space-between, flex-end);
 }
 
 .feature {
     @include container(40%, 100%, 10px 0);
-    min-height: 200px !important;
     padding: 30px 10px 0px 20px;
     text-transform: uppercase;
     background: $White;
@@ -158,12 +153,13 @@
     border-radius: 4px;
 
     div {
-        @include container(40px, 40px, 0);
+        @include container(25px, 25px, 0);
         padding: 10px;
-        border-radius: 40px;
+        border-radius: 25px;
         position: relative;
 
         img {
+           
             position: absolute;
             top: 0;
             bottom: 0;
@@ -192,14 +188,38 @@
        line-height: 28.15px;
     }
 
+    @include portraitSet {
+        width: 37%;
+
+        img {
+            @include container(17px, 14px, 0);
+        }
+
+        p {
+            font-size: 10px;
+            margin: 5px 0;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+    }
+
     @include landscapeSet {
         width: 40%;
         min-height: fit-content !important;
         padding: 20px 10px 20px 20px;
+
+        div {
+            @include container(40px, 40px, 0);
+            padding: 10px;
+            border-radius: 40px;
+            position: relative;
+        }
     }
 
-    @include minWidth(1336px) {
-        @include container(208.4px, 118.4px, 10px 26px 10px 0);
+    @include minWidth(1180px) {
+        @include container(208.4px, 118.4px, 10px 0);
 
         div {
             @include container(30px, 30px, 0);
@@ -260,7 +280,7 @@
 .user-options {
     @include container(180px, fit-content, 0px);
     position: absolute;
-    right: 0;
+    right: -20px;
     z-index: 20;
     background-color: $White;
     border: 1px solid rgba(84, 95, 125, 0.04);

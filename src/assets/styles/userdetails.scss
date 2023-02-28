@@ -10,12 +10,12 @@
 /*==========  Class Rules  ==========*/
 .flex-wrapper {
     @include flexboxWrap(row, flex-start, center);
-    @include container(90%, fit-content, 0 auto 10px auto);
+    @include container(90%, fit-content, 0 auto 10px 0);
     cursor: pointer;
 
     p {
         font-family: 'Work Sans';
-        margin: 0px 10px;
+        margin: 0px 0 0 10px;
         font-weight: 400;
         font-size: 16px;
         line-height: 19px;
@@ -24,7 +24,7 @@
 
     @include desktopView {
         width: 100%;
-        margin-bottom: 20px
+        margin: 0 auto 20px 0;
     }
 }
 
@@ -132,6 +132,10 @@
             }
         }
 
+        .details:nth-child(4) {
+            border-bottom: none;
+        }
+
     }
 
     @include desktopView {
@@ -194,7 +198,6 @@
         img {
             @include container(100px, 100px, 10px 0);
             border-radius: 100px;
-            border: 3px solid $Cyan;
         }
 
         p {
@@ -274,7 +277,6 @@
     flex-wrap: nowrap;
     overflow-x: scroll;
     bottom: -1.2px;
-    z-index: 9;
 
     &::-webkit-scrollbar {
         height: 0px;
@@ -284,7 +286,6 @@
         min-width: 150px;
         cursor: pointer;
         margin-bottom: -0.5px;
-        z-index: 9;
 
         p {
             font-family: 'SF Compact Text';

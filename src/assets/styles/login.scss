@@ -9,7 +9,7 @@
 
     @include desktopView {
        
-        background: linear-gradient(to right, $Dashboard 50%, $White 50%);
+        background-color: $White;
     }
 
     @include minWidth(1336px) {
@@ -19,6 +19,7 @@
 
 #login-photo {
     display: none;
+    background-color: transparent !important;; 
 
     @include dynamicQueries(1024px, 1024px) {
         img {
@@ -112,7 +113,7 @@
     
 
     @include desktopView {
-        margin: 220px auto 0px auto;
+        margin: 200px auto 0px auto;
 
         div {
             @include container(50%, fit-content, 0);
@@ -215,7 +216,16 @@
         #relative-wrapper {
             width: 100%;
         }
+    }
 
+
+    @include portraitSet {
+        .log-in {
+            width: 97%;
+        }
+    }
+
+    @include minWidth(768px) {
         .log-in {
             width: 93%;
             display: block;

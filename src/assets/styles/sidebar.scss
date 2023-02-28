@@ -8,7 +8,11 @@
 }
 
 #mobile-logo {
-    margin: 20px;
+    margin: 20px 0 20px 28px;
+
+    img {
+        @include container(144px, 34px, 0);
+    }
 
     @include desktopView {
         margin: 0;
@@ -19,6 +23,10 @@
     @include container(100%, 100vh, 0);
     overflow-y: scroll;
     overflow-x: hidden;
+
+    a {
+        text-decoration: none !important;
+    }
 
     &::-webkit-scrollbar {
         display: none;
@@ -31,6 +39,17 @@
 
 
 /*==========  Class Rules  ==========*/
+.version-number {
+    font-family: 'Work Sans';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 14px;
+    padding: 0 0 0 35px !important;
+    margin: 20px 0 0 0;
+    color: $DeepBlue;
+}
+
 .sidebar-wrapper {
     @include container(100vw, 100vh, 0);
     overflow-y: scroll;
@@ -76,13 +95,13 @@
     padding-left: 0px;
 
     @include desktopView {
-        padding: 20px 0px 40px 0px;
+        padding: 100px 0px 40px 0px;
     }
 }
 
 .menu-item-flex {
     @include flexboxWrap(row, flex-start, center);
-    padding-left: 20px;
+    padding-left: 24px;
     border-left: 6px solid transparent;
     cursor: pointer;
     p {
@@ -97,6 +116,7 @@
 
     img {
         @include container(17.5px, 16px, 0);
+        opacity: 0.5;
     }
 
     .blur-color {
@@ -106,8 +126,9 @@
     &:hover {
         background-color: rgba(57, 205, 204, 0.1);
         border-color: $Cyan;
+        transition: 0.3s all ease-in-out;
 
-        .blur-color {
+        .blur-color, img {
             opacity: 1;
         }
     }
@@ -115,7 +136,7 @@
 
 .menu-list {
     @include container(100%, fit-content, 15px auto);
-    padding-left: 25px;
+    padding-left: 30px;
 
     .menu-title {
         font-family: 'Work Sans';

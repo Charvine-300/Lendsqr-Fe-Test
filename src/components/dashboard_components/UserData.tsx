@@ -2,20 +2,25 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Post } from '../../api/api'
 import '../../assets/styles/dashboard.scss'
-import FilterImg from '../../assets/images/filter.png'
-import Options from '../../assets/images/options.png'
+import FilterImg from '../../assets/images/filter.svg'
+import Options from '../../assets/images/options.svg'
 import { userTableHeads } from '../../constants'
 import Filter from './Filter'
-import ViewDetails from '../../assets/images/view.png'
-import BlacklistUser from '../../assets/images/blacklist.png'
-import ActivateUser from '../../assets/images/activate.png'
+import ViewDetails from '../../assets/images/view.svg'
+import BlacklistUser from '../../assets/images/blacklist.svg'
+import ActivateUser from '../../assets/images/activate.svg'
 import { 
   CurrentUsersContext, 
   IsError, 
   IsLoading, 
   FilterToggle, 
   FilterFormToggleFunc, 
-  SetFilterToggle 
+  SetFilterToggle,
+  OptionsToggle,
+  SetOptionsToggle,
+  UserID,
+  SetUserID,
+  UserOptionsToggleFunc 
 } from '../../App'
 
 
@@ -35,26 +40,13 @@ function UserData({}: Props) {
   const filterFormToggle = useContext(FilterFormToggleFunc);
   const setFilterToggle = useContext(SetFilterToggle);
 
+  //User Options Toggle
+  const optionsToggle = useContext(OptionsToggle);
+  const setOptionsToggle = useContext(SetOptionsToggle);
+  const userID = useContext(UserID);
+  const setUserID = useContext(SetUserID);
+  const UserOptionsToggle = useContext(UserOptionsToggleFunc);
 
-  //Stateful variables to toggle user options
-  const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
-  const [userID, setUserID] = useState<number>(0);
-
-  
-  //Stateful variable to trigger re-render with blacklist.activate user feature
-  const [optionSelect, setOptionSelect] = useState<number>(1);
-
-  const UserOptionsToggle = (id: number) => {
-    setUserID(id);
-
-    if (optionsToggle === false) {
-      setOptionsToggle(true);
-    }
-
-    else {
-      setOptionsToggle(false);
-    }
-  }
 
 
   //Function to fetch user and navigate to user details page
@@ -103,7 +95,7 @@ function UserData({}: Props) {
                   <span className={user.status}> {user.status} </span>
                 </td>
                 <td> 
-                  <img src={Options} alt="Options icon" onClick={() => UserOptionsToggle(parseInt(user.id))} />
+                  <img src={Options} alt="Options icon" style={{'cursor': 'pointer'}} onClick={() => UserOptionsToggle(parseInt(user.id))} />
                   <div 
                     className='user-options' 
                     style={{'display': `${userID === parseInt(user.id) && optionsToggle === true ? 'block' : 'none'}`}}
@@ -116,7 +108,7 @@ function UserData({}: Props) {
                       <li 
                         onClick={() => {
                           user['status'] = 'blacklisted'
-                          setOptionSelect(optionSelect + 1)
+                          setOptionsToggle(false)
                         }}
                       >
                         <img src={BlacklistUser} alt="blacklist user icon" />
@@ -125,7 +117,7 @@ function UserData({}: Props) {
                       <li 
                         onClick={() => {
                           user['status'] = 'active'
-                          setOptionSelect(optionSelect + 1)
+                          setOptionsToggle(false)
                         }}
                       >
                         <img src={ActivateUser} alt="activate user icon" />

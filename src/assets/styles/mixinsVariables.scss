@@ -74,6 +74,13 @@ $InputBorder: rgba(84, 95, 125, 0.15);
     }
 }
 
+//Stylings to add to layout in protrait mode
+@mixin portraitSet {
+    @media screen and (orientation: portrait) {
+        @content;
+    }
+}
+
 //Stylings to add to layout at a minimum width of 1024px
 @mixin desktopView {
     @media screen and (min-width: 1024px) {

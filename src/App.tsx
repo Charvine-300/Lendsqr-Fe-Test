@@ -20,10 +20,16 @@ export const IsLoading = createContext<boolean | any>(null);
 export const FilterToggle = createContext<string | any>(null);
 export const SetFilterToggle = createContext<any | null>(null);
 export const FilterFormToggleFunc = createContext<any | null>(null);
+export const OptionsToggle = createContext<boolean | null>(null);
+export const SetOptionsToggle = createContext<any | null>(null);
+export const UserID = createContext<any | null>(null);
+export const SetUserID = createContext<any | null>(null);
+export const UserOptionsToggleFunc = createContext<any | null>(null);
 
 function App() {
-    //Creating an array of status types to pick at random for each user
-    const statusTypes = ['active', 'inactive', 'pending', 'blacklisted'];
+
+  //Creating an array of status types to pick at random for each user
+  const statusTypes = ['active', 'inactive', 'pending', 'blacklisted'];
 
   const [userData, setUserData] = useState<UserDataProps[]>([]);
   const [isError, setIsError] = useState<boolean>(false);
@@ -41,6 +47,7 @@ function App() {
         const random = Math.floor(Math.random() * statusTypes.length);
         data[i].status = statusTypes[random];
       }
+
       //Storing data in localStorage for reset feature in filter form
       localStorage.setItem('userData', JSON.stringify(data));
       setUserData(data)
@@ -61,6 +68,7 @@ function App() {
   //Slicing through user data
   const currentUsers = userData.slice(firstPostIndex, lastPostIndex);
 
+  //Stateful variable for filter form component
   const [filterToggle, setFilterToggle] = useState<string>('none');
 
   const FilterFormToggle = () => {
@@ -73,15 +81,36 @@ function App() {
     }
   }
 
-  const closeFilterForm = () => {
+  const closeOnClickOut = () => {
     if (filterToggle === 'block') {
       setFilterToggle('none');
     }
+
+    if (optionsToggle === true) {
+      setOptionsToggle(false);
+    }
   }
+
+  //Stateful variable for User options
+  const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
+  const [userID, setUserID] = useState<number>(0);
+
+  const UserOptionsToggle = (id: number) => {
+    setUserID(id);
+
+    if (optionsToggle === false) {
+      setOptionsToggle(true);
+    }
+
+    else {
+      setOptionsToggle(false);
+    }
+  }
+
   
 
   return (
-    <div onClick={closeFilterForm}>
+    <div onClick={closeOnClickOut}>
       <CurrentUsersContext.Provider value={currentUsers}>
         <UserDataContext.Provider value={userData}>
           <SetUserDataContext.Provider value={setUserData}>
@@ -94,14 +123,22 @@ function App() {
                         <FilterToggle.Provider value={filterToggle}>
                           <FilterFormToggleFunc.Provider value={FilterFormToggle}>
                             <SetFilterToggle.Provider value={setFilterToggle}>
-                              <Router>
-                                <ScrollToTop />
-                                <Routes>
-                                  <Route path="/" element={<Navigate to='/login' />} />
-                                  <Route path="/login" element={<Login />} />
-                                  <Route path='/dashboard/*' element={<Homepage />} />
-                                </Routes>
-                              </Router>
+                              <OptionsToggle.Provider value={optionsToggle}>
+                                <SetOptionsToggle.Provider value={setOptionsToggle}>
+                                  <UserID.Provider value={userID}>
+                                    <UserOptionsToggleFunc.Provider value={UserOptionsToggle}>
+                                      <Router>
+                                        <ScrollToTop />
+                                        <Routes>
+                                          <Route path="/" element={<Navigate to='/login' />} />
+                                          <Route path="/login" element={<Login />} />
+                                          <Route path='/dashboard/*' element={<Homepage />} />
+                                        </Routes>
+                                      </Router>
+                                    </UserOptionsToggleFunc.Provider>
+                                  </UserID.Provider>
+                                </SetOptionsToggle.Provider>
+                              </OptionsToggle.Provider>
                             </SetFilterToggle.Provider>
                           </FilterFormToggleFunc.Provider>
                        </FilterToggle.Provider>

@@ -1,7 +1,7 @@
 import React, { useContext, useState } from 'react'
 import '../../assets/styles/dashboard.scss'
-import Previous from '../../assets/images/previous.png'
-import Next from '../../assets/images/next.png'
+import Previous from '../../assets/images/previous.svg'
+import Next from '../../assets/images/next.svg'
 import { 
   PageNumberContext, 
   SetPageNumberContext, 

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import '../assets/styles/login.scss';
-import Logo from '../assets/images/logo.png';
-import LoginImg from '../assets/images/login_illustration.png';
+import Logo from '../assets/images/logo.svg';
+import LoginImg from '../assets/images/login_illustration.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormInput } from '../../interfaces'
 import { useNavigate } from 'react-router-dom';
@@ -29,9 +29,6 @@ function Login() {
       setTogglePassword(false);
     }
   }
-
-  
-
 
 
 

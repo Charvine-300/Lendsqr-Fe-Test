@@ -1,13 +1,13 @@
 import { Fragment, useState } from 'react'
 import '../assets/styles/header.scss'
-import Menu from '../assets/images/menu.png'
-import Close from '../assets/images/close.png'
-import Search from '../assets/images/search.png'
-import Logo from '../assets/images/logo.png'
-import Bell from '../assets/images/bell.png'
-import Avatar from '../assets/images/avatar.png'
-import Arrow from '../assets/images/arrow.png'
-import MobileSearch from '../assets/images/mobile_search.png'
+import Menu from '../assets/images/menu.svg'
+import Close from '../assets/images/close.svg'
+import Search from '../assets/images/search.svg'
+import Logo from '../assets/images/logo.svg'
+import Bell from '../assets/images/bell.svg'
+import Avatar from '../assets/images/avatar.svg'
+import Arrow from '../assets/images/arrow.svg'
+import MobileSearch from '../assets/images/mobile_search.svg'
 
 
 type Props = {
@@ -17,19 +17,18 @@ type Props = {
 
 function Header({ sidebarToggle, setSidebarToggle }: Props) {
   //Stateful variable for search bar toggle in mobile view
-  const [searchToggle, setSearchToggle] = useState('none');
+  const [searchToggle, setSearchToggle] = useState('desktop');
 
   //Stateful variable for sidebar toggle in mobile view
-  //const [sidebarToggle, setSidebarToggle] = useState('desktop');
   const [menuImg, setMenuImg] = useState(Menu);
 
   const searchBarToggle = () => {
-    if (searchToggle === 'none') {
-      setSearchToggle('block');
+    if (searchToggle === 'desktop') {
+      setSearchToggle('mobile');
     }
 
     else {
-      setSearchToggle('none');
+      setSearchToggle('desktop');
     }
   }
 
@@ -54,17 +53,18 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
     <Fragment>
       <header>
         <div className="header-items">
-          <img src={Logo} alt="Comapny Logo" className='desktop header-logo' />
+          <span id='desktop-header-logo' className='desktop'>
+            <img src={Logo} alt="Comapny Logo" className='header-logo' />
+          </span>
           <img 
             src={menuImg} 
             alt="Lendsqr logo" 
-            id='hamburger' 
             className='mobile' 
             onClick={SidebarToggle}
           />
 
           {/* Search bar for desktop view */}
-          <div id="search-bar" className='desktop'>
+          <div className='desktop search-bar'>
             <span>
               <img src={Search} alt="Search for anything" />
             </span>
@@ -84,11 +84,13 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
         </div>
 
         {/* Search Bar for mobile view */}
-        <div id="search-bar" className={`search-mobile`} style={{'display': `${searchToggle}`}}>
-          <span>
-            <img src={Search} alt="Search for anything" />
-          </span>
-          <input type="text" placeholder='Search for anything' />
+        <div className={`mobile-search-wrapper ${searchToggle}`}>
+          <div id='mobile-search-bar' className='search-mobile search-bar'>
+            <span>
+              <img src={Search} alt="Search for anything" />
+            </span>
+            <input type="text" placeholder='Search for anything' />
+          </div>
         </div>
       </header>
     </Fragment>
