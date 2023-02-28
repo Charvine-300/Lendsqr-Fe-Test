@@ -84,8 +84,8 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
         </div>
 
         {/* Search Bar for mobile view */}
-        <div className={`mobile-search-wrapper ${searchToggle}`}>
-          <div id='mobile-search-bar' className='search-mobile search-bar'>
+        <div id='mobile-search-bar' className={`mobile-search-wrapper ${searchToggle}`}>
+          <div className='search-mobile search-bar'>
             <span>
               <img src={Search} alt="Search for anything" />
             </span>

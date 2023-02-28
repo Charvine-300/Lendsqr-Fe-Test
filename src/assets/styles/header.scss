@@ -177,7 +177,7 @@
 .mobile-search-wrapper {
     @include container(100%, 51px, 0px);
     background-color: $White;
-    box-shadow: 3px 10px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
 }
 
 
@@ -190,7 +190,7 @@ header {
     background-color: $White;
     padding: 12px 0px;
     z-index: 100;
-    box-shadow: 3px 0px 20px rgba(0, 0, 0, 0.2);
+    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.2);
 
     @include desktopView {
         z-index: 10;
