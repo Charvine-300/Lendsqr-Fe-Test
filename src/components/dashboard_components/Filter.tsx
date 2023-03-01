@@ -45,13 +45,17 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
         <form method='POST'>
           <div className="input-bars">
             <label htmlFor="organisation"> organisation </label>
-            <input 
-              type="text" 
+            <select 
+              //name="organizations"
               id='organisation' 
               placeholder='Select'
               {...register("orgName", { required: true })} 
               aria-invalid={errors.orgName ? "true" : "false"}
-            />
+            >
+            <option value="Lendsqr"> Lendsqr </option>
+            <option value="Irorun"> Irorun</option>
+            <option value="Blockacash"> Blockacash </option>
+          </select>
             {errors.orgName?.type === 'required' && <p className='error' role="alert">This field is required</p>}
           </div>
           <div className="input-bars">
@@ -100,13 +104,17 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
           </div>
           <div className="input-bars">
             <label htmlFor="status"> status </label>
-            <input 
-              type="status" 
+            <select 
               id='status' 
               placeholder='Select'
               {...register("status", { required: true })} 
               aria-invalid={errors.status ? "true" : "false"}
-            />
+            >
+            <option value="Active"> Active </option>
+            <option value="Inactive"> Inactive </option>
+            <option value="Pending"> Pending </option>
+            <option value="Blacklisted"> Blacklisted </option>
+          </select>
             {errors.status?.type === 'required' && <p className='error' role="alert">This field is required</p>}
           </div>
           <div className="input-bars">

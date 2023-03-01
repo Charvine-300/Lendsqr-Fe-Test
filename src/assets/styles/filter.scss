@@ -35,7 +35,7 @@
         text-transform: capitalize;
     }
 
-    input {
+    input, select {
         @include container(188.4px, 38.4px, 10px 0);
         padding: 0 20px;
         background: $White;
@@ -58,9 +58,19 @@
             font-weight: 400;
             font-size: 14px;
             line-height: 16px;
-
-opacity: 0.7;
+            opacity: 0.7;
         }
+    }
+
+    select {
+        width: 230px;
+        color: $Inactive;
+        font-family: 'Work Sans';
+        font-style: normal;
+        font-weight: 400;
+        font-size: 14px;
+        line-height: 16px;
+        opacity: 0.7;
     }
 
     .filter-button {

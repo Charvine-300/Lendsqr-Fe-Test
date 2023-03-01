@@ -177,7 +177,8 @@
 .mobile-search-wrapper {
     @include container(100%, 51px, 0px);
     background-color: $White;
-    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.2);
+    padding-top: 5px;
+    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.2);
 }
 
 

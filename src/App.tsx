@@ -2,6 +2,7 @@ import { Fragment, useState, useEffect, createContext } from "react"
 import Login from "./components/Login"
 import Homepage from "./components/Dashboard"
 import ScrollToTop from "./components/ScrollToTop"
+import NotFound from "./components/NotFound"
 import { UserDataProps } from "../interfaces"
 import { Post } from "./api/api"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
@@ -133,6 +134,7 @@ function App() {
                                           <Route path="/" element={<Navigate to='/login' />} />
                                           <Route path="/login" element={<Login />} />
                                           <Route path='/dashboard/*' element={<Homepage />} />
+                                          <Route path='*' element={<NotFound />} />
                                         </Routes>
                                       </Router>
                                     </UserOptionsToggleFunc.Provider>
