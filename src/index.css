@@ -37,3 +37,14 @@ body, html {
 input:focus {
   outline: none;
 }
+
+select {
+  appearance: none;
+  -moz-appearance: none;
+  -webkit-appearance: none;
+  padding-right: 15px;
+  background-image: url('../images/drop_down.svg');
+  background-repeat: no-repeat;
+  background-position: calc(100% - 16.71px) center;
+  background-size: 10px;
+}

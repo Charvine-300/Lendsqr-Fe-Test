@@ -8,7 +8,7 @@ export interface FilterFormInput {
     userName: string;
     email: string;
     createdAt: string;
-    phoneNumber: string;
+    phoneNumber: string | any;
     status: string;
 }
 
@@ -41,12 +41,12 @@ export interface UserDataProps {
     orgName: string;
     userName: string;
     email: string;
-    phoneNumber: string;
+    phoneNumber: string | any;
     lastActiveDate: string;
     profile: {
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    phoneNumber: string | any;
     avatar: string;
     gender: string;
     bvn: string;
@@ -56,7 +56,7 @@ export interface UserDataProps {
     guarantor: {
     firstName: string;
     lastName: string;
-    phoneNumber: string;
+    phoneNumber: string | any;
     gender: string;
     address: string;
     },

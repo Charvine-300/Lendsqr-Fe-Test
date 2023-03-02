@@ -7,6 +7,16 @@
     @include container(12px, 8px, 0);
 }
 
+#active {
+    background-color: rgba(57, 205, 204, 0.1);
+        border-color: $Cyan;
+        transition: 0.3s all ease-in-out;
+
+        .blur-color, img {
+            opacity: 1;
+        }
+    }
+
 #mobile-logo {
     margin: 20px 0 20px 28px;
 
@@ -121,16 +131,6 @@
 
     .blur-color {
         opacity: 0.5;
-    }
-
-    &:hover {
-        background-color: rgba(57, 205, 204, 0.1);
-        border-color: $Cyan;
-        transition: 0.3s all ease-in-out;
-
-        .blur-color, img {
-            opacity: 1;
-        }
     }
 }
 

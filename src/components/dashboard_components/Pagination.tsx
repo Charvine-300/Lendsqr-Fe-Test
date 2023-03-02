@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import { useContext } from 'react'
 import '../../assets/styles/dashboard.scss'
 import Previous from '../../assets/images/previous.svg'
 import Next from '../../assets/images/next.svg'
@@ -13,7 +13,6 @@ import {
 
 
 function Pagination() {
-  const [currentPageNumber, setCurrentPageNumber] = useState<number>(1);
   const pageNumber = useContext(PageNumberContext);
   const setPageNumber = useContext(SetPageNumberContext);
   const userData = useContext(UserDataContext);
@@ -34,14 +33,12 @@ function Pagination() {
   const nextPage = ()  => {
     if (pageNumber < totalPages) {
       setPageNumber(pageNumber + 1);
-      //pageNumber(currentPageNumber);
     }
   }
 
   const previousPage = () => {
     if (pageNumber > 1) {
       setPageNumber(pageNumber - 1);
-      //pageNumber(currentPageNumber);
     }
   }
 

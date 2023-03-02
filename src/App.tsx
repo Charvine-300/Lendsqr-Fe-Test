@@ -5,6 +5,7 @@ import ScrollToTop from "./components/ScrollToTop"
 import NotFound from "./components/NotFound"
 import { UserDataProps } from "../interfaces"
 import { Post } from "./api/api"
+import moment from "moment"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
 
 
@@ -18,14 +19,12 @@ export const PerPageContext = createContext<number | any>(null);
 export const SetPerPageContext = createContext<any | null>(null);
 export const IsError = createContext<boolean | any>(null);
 export const IsLoading = createContext<boolean | any>(null);
-export const FilterToggle = createContext<string | any>(null);
-export const SetFilterToggle = createContext<any | null>(null);
-export const FilterFormToggleFunc = createContext<any | null>(null);
 export const OptionsToggle = createContext<boolean | null>(null);
 export const SetOptionsToggle = createContext<any | null>(null);
 export const UserID = createContext<any | null>(null);
 export const SetUserID = createContext<any | null>(null);
 export const UserOptionsToggleFunc = createContext<any | null>(null);
+
 
 function App() {
 
@@ -40,6 +39,7 @@ function App() {
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [usersPerPage, setUsersPerPage] = useState<number>(10);
 
+
   useEffect(() => {
     //Making request to API to get user data
     Post.getPosts()
@@ -47,6 +47,12 @@ function App() {
       for (let i = 0; i < data.length; i++) {
         const random = Math.floor(Math.random() * statusTypes.length);
         data[i].status = statusTypes[random];
+
+        //Coverting dates to DD/MM/YYYY format
+        data[i].createdAt = moment.utc(data[i].createdAt).format('MMM D, YYYY h:mm A');
+
+        //Converting the Phone Number Format to (XXX) XXX-XXXX
+        data[i].phoneNumber = data[i].phoneNumber.split('x').shift();
       }
 
       //Storing data in localStorage for reset feature in filter form
@@ -62,6 +68,7 @@ function App() {
     return () => {};
   }, []);
 
+
   //Varables for slicing through user data
   const lastPostIndex = currentPage * usersPerPage;
   const firstPostIndex = lastPostIndex - usersPerPage;
@@ -69,28 +76,6 @@ function App() {
   //Slicing through user data
   const currentUsers = userData.slice(firstPostIndex, lastPostIndex);
 
-  //Stateful variable for filter form component
-  const [filterToggle, setFilterToggle] = useState<string>('none');
-
-  const FilterFormToggle = () => {
-    if (filterToggle === 'none') {
-      setFilterToggle('block');
-    }
-
-    else {
-      setFilterToggle('none');
-    }
-  }
-
-  const closeOnClickOut = () => {
-    if (filterToggle === 'block') {
-      setFilterToggle('none');
-    }
-
-    if (optionsToggle === true) {
-      setOptionsToggle(false);
-    }
-  }
 
   //Stateful variable for User options
   const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
@@ -111,7 +96,7 @@ function App() {
   
 
   return (
-    <div onClick={closeOnClickOut}>
+    <div>
       <CurrentUsersContext.Provider value={currentUsers}>
         <UserDataContext.Provider value={userData}>
           <SetUserDataContext.Provider value={setUserData}>
@@ -121,29 +106,23 @@ function App() {
                   <SetPerPageContext.Provider value={setUsersPerPage}>
                     <IsError.Provider value={isError}>
                       <IsLoading.Provider value={isLoading}>
-                        <FilterToggle.Provider value={filterToggle}>
-                          <FilterFormToggleFunc.Provider value={FilterFormToggle}>
-                            <SetFilterToggle.Provider value={setFilterToggle}>
-                              <OptionsToggle.Provider value={optionsToggle}>
-                                <SetOptionsToggle.Provider value={setOptionsToggle}>
-                                  <UserID.Provider value={userID}>
-                                    <UserOptionsToggleFunc.Provider value={UserOptionsToggle}>
-                                      <Router>
-                                        <ScrollToTop />
-                                        <Routes>
-                                          <Route path="/" element={<Navigate to='/login' />} />
-                                          <Route path="/login" element={<Login />} />
-                                          <Route path='/dashboard/*' element={<Homepage />} />
-                                          <Route path='*' element={<NotFound />} />
-                                        </Routes>
-                                      </Router>
-                                    </UserOptionsToggleFunc.Provider>
-                                  </UserID.Provider>
-                                </SetOptionsToggle.Provider>
-                              </OptionsToggle.Provider>
-                            </SetFilterToggle.Provider>
-                          </FilterFormToggleFunc.Provider>
-                       </FilterToggle.Provider>
+                          <OptionsToggle.Provider value={optionsToggle}>
+                            <SetOptionsToggle.Provider value={setOptionsToggle}>
+                              <UserID.Provider value={userID}>
+                                <UserOptionsToggleFunc.Provider value={UserOptionsToggle}>
+                                  <Router>
+                                    <ScrollToTop />
+                                    <Routes>
+                                      <Route path="/" element={<Navigate to='/login' />} />
+                                      <Route path="/login" element={<Login />} />
+                                      <Route path='/dashboard/*' element={<Homepage />} />
+                                      <Route path='*' element={<NotFound />} />
+                                    </Routes>
+                                  </Router>   
+                                </UserOptionsToggleFunc.Provider>
+                              </UserID.Provider>
+                            </SetOptionsToggle.Provider>
+                          </OptionsToggle.Provider>
                       </IsLoading.Provider>
                     </IsError.Provider>
                   </SetPerPageContext.Provider>

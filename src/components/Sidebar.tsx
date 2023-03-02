@@ -1,9 +1,8 @@
-import React, { Fragment } from 'react'
+import React, { Fragment, useState } from 'react'
 import { Link } from 'react-router-dom'
 import '../assets/styles/sidebar.scss'
 import { useNavigate } from 'react-router-dom'
 import Logo from '../assets/images/logo.svg'
-import Close from '../assets/images/close.png'
 import Briefcase from '../assets/images/menu_icons/briefcase.svg'
 import Home from '../assets/images/menu_icons/home.svg'
 import Arrow from '../assets/images/menu_icons/sidebar_arrow.svg'
@@ -22,6 +21,10 @@ type Props = {
 function Sidebar({ display }: Props) {
   const navigate = useNavigate();
 
+  //Stateful variable for active options
+  const [activeOption, setActiveOption] = useState('dashboard');
+
+
   return (
     <Fragment>
       <div className={`sidebar-wrapper ${display}`}>
@@ -37,7 +40,7 @@ function Sidebar({ display }: Props) {
               <img src={Arrow} alt="Arrow icon" id='arrow' />
             </div>
             <Link to='/dashboard'>
-              <div className="menu-item-flex" style={{'marginBottom': '20px'}}>
+              <div onClick={() => setActiveOption('dashboard')} id={activeOption === 'dashboard' ? 'active' : ''} className="menu-item-flex" style={{'marginBottom': '20px'}}>
                 <img src={Home} alt="Dashboard" />
                 <p className='blur-color'> dashboard </p>
               </div>
@@ -50,7 +53,7 @@ function Sidebar({ display }: Props) {
             <div>
               {customerMenu.map(item => (
                 <Link to={`/${item.name.split(" ").join("_")}`} key={item.id}>
-                  <div className="menu-item-flex">
+                  <div className="menu-item-flex" onClick={() => setActiveOption(item.name)} id={activeOption === item.name ? 'active' : ''}>
                     <img src={item.icon} alt={item.name} />
                     <p className='blur-color'> {item.name} </p>
                   </div>
@@ -65,7 +68,7 @@ function Sidebar({ display }: Props) {
             <div>
               {businessMenu.map(item => (
                 <Link to={`/${item.name.split(" ").join("_")}`} key={item.id}>
-                  <div className="menu-item-flex">
+                  <div className="menu-item-flex" onClick={() => setActiveOption(item.name)} id={activeOption === item.name ? 'active' : ''}>
                     <img src={item.icon} alt={item.name} />
                     <p className='blur-color'> {item.name} </p>
                   </div>
@@ -84,7 +87,7 @@ function Sidebar({ display }: Props) {
                   `/` :
                   `/${item.name.split(" ").join("_")}`} key={item.id}
                 >
-                  <div className="menu-item-flex">
+                  <div className="menu-item-flex" onClick={() => setActiveOption(item.name)} id={activeOption === item.name ? 'active' : ''}>
                     <img src={item.icon} alt={item.name} />
                     <p className='blur-color'> {item.name} </p>
                   </div>
