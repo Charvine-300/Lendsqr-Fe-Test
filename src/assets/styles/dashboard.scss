@@ -55,6 +55,11 @@
         color: $Inactive;
     }
 
+    .right-margin {
+        margin-right: 0;
+    }
+
+
     @include desktopView {
         display: inline-flex;
         float: right;

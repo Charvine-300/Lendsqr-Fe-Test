@@ -74,7 +74,7 @@ function Pagination() {
             > {page} </button>
           ))}
         </div>
-        <div className="arrow-buttons" onClick={nextPage}>
+        <div className="arrow-buttons right-margin" onClick={nextPage}>
           <img 
             src={Next} 
             alt="Next Page button" 
