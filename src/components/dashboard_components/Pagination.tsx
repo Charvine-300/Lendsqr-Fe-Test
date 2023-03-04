@@ -8,7 +8,7 @@ import {
   UserDataContext,
   PerPageContext,
   SetPerPageContext 
-} from '../../App'
+} from '../../utils/contexts'
 
 
 

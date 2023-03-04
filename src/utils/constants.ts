@@ -29,7 +29,7 @@ import {
   FeaturesProps,
   TableHeadProps,
   UserMenuProps
-} from "../../interfaces";
+} from "./interfaces";
 
 
 //Content for sidebar menu

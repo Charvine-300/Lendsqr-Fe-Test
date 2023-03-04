@@ -9,7 +9,7 @@ import '../assets/styles/dashboard.scss'
 
 
 
-function Homepage() {
+function Dashboard() {
   //Stateful variable for sidebar toggle in mobile view
   const [sidebarToggle, setSidebarToggle] = useState('desktop');
 
@@ -26,4 +26,4 @@ function Homepage() {
   )
 }
 
-export default Homepage
+export default Dashboard

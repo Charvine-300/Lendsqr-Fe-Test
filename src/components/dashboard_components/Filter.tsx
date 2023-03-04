@@ -1,8 +1,8 @@
 import '../../assets/styles/filter.scss'
 import { useContext } from 'react'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { UserDataContext, SetUserDataContext } from '../../App'
-import { FilterFormInput } from '../../../interfaces'
+import { UserDataContext, SetUserDataContext } from '../../utils/contexts'
+import { FilterFormInput } from '../../utils/interfaces'
 
 
 type Props = {

@@ -1,29 +1,30 @@
 import { Fragment, useState, useEffect, createContext } from "react"
 import Login from "./components/Login"
-import Homepage from "./components/Dashboard"
+import Dashboard from "./components/Dashboard"
 import ScrollToTop from "./components/ScrollToTop"
 import NotFound from "./components/NotFound"
-import { UserDataProps } from "../interfaces"
+import { UserDataProps } from "./utils/interfaces"
 import { Post } from "./api/api"
 import moment from "moment"
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom"
+import {
+  CurrentUsersContext,
+  UserDataContext,
+  SetUserDataContext,
+  SetPageNumberContext,
+  PageNumberContext,
+  PerPageContext,
+  SetPerPageContext,
+  IsError,
+  IsLoading,
+  OptionsToggle,
+  SetOptionsToggle,
+  UserID,
+  UserOptionsToggleFunc
+} from "./utils/contexts"
 
 
-//Initializing context API for user data
-export const CurrentUsersContext = createContext<UserDataProps[] | null>(null);
-export const UserDataContext = createContext<UserDataProps[] | any>(null);
-export const SetUserDataContext = createContext<any | null>(null);
-export const PageNumberContext = createContext<number | any>(null);
-export const SetPageNumberContext = createContext<any | null>(null);
-export const PerPageContext = createContext<number | any>(null);
-export const SetPerPageContext = createContext<any | null>(null);
-export const IsError = createContext<boolean | any>(null);
-export const IsLoading = createContext<boolean | any>(null);
-export const OptionsToggle = createContext<boolean | null>(null);
-export const SetOptionsToggle = createContext<any | null>(null);
-export const UserID = createContext<any | null>(null);
-export const SetUserID = createContext<any | null>(null);
-export const UserOptionsToggleFunc = createContext<any | null>(null);
+
 
 
 function App() {
@@ -115,7 +116,7 @@ function App() {
                                     <Routes>
                                       <Route path="/" element={<Navigate to='/login' />} />
                                       <Route path="/login" element={<Login />} />
-                                      <Route path='/dashboard/*' element={<Homepage />} />
+                                      <Route path='/dashboard/*' element={<Dashboard />} />
                                       <Route path='*' element={<NotFound />} />
                                     </Routes>
                                   </Router>   

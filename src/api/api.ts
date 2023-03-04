@@ -1,5 +1,5 @@
 import axios, { AxiosResponse } from 'axios';
-import { UserDataProps } from '../../interfaces';
+import { UserDataProps } from '../utils/interfaces';
 
 const instance = axios.create({
 	baseURL: 'https://6270020422c706a0ae70b72c.mockapi.io/lendsqr/api/v1/',

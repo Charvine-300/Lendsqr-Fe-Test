@@ -1,5 +1,5 @@
 import '../../assets/styles/dashboard.scss'
-import { userFeatures } from '../../constants'
+import { userFeatures } from '../../utils/constants'
 import UserData from './UserData'
 import Pagination from './Pagination'
 
