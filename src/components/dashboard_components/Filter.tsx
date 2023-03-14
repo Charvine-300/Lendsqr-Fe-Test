@@ -6,12 +6,14 @@ import { FilterFormInput } from '../../utils/interfaces'
 
 
 type Props = {
-  filterToggle: string;
+  filterToggle: boolean;
   setFilterToggle: any;
+  ID: number;
+  headID: number;
 }
 
 
-function Filter({ filterToggle, setFilterToggle }: Props) {
+function Filter({ filterToggle, setFilterToggle, ID, headID }: Props) {
   const userData = useContext(UserDataContext);
   const setUserData = useContext(SetUserDataContext);
 
@@ -41,7 +43,7 @@ function Filter({ filterToggle, setFilterToggle }: Props) {
 
   return (
     <>
-      <section className="filter-wrapper" style={{'display': `${filterToggle}`}}>
+      <section className="filter-wrapper" style={{'display': `${ID === headID && filterToggle === true ? 'block' : 'none'}`}}>
         <form method='POST'>
           <div className="input-bars">
             <label htmlFor="organisation"> organisation </label>

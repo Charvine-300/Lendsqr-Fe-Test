@@ -2,11 +2,9 @@ import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { Post } from '../../api/api'
 import '../../assets/styles/dashboard.scss'
-import FilterImg from '../../assets/images/filter.svg'
+import TableHeader from './TableHeader'
 import Options from '../../assets/images/options.svg'
-import { userTableHeads } from '../../utils/constants'
 import { CurrentUsersContext, IsError, IsLoading } from '../../utils/contexts'
-import Filter from './Filter'
 import ViewDetails from '../../assets/images/view.svg'
 import BlacklistUser from '../../assets/images/blacklist.svg'
 import ActivateUser from '../../assets/images/activate.svg'
@@ -27,12 +25,6 @@ function UserData({}: Props) {
   const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
   const [userID, setUserID] = useState<number>(0);
 
-  //Stateful variable for filter form toggle
-  const [filterToggle, setFilterToggle] = useState<string>('none');
-  
-  //Stateful variable to trigger re-render with blacklist.activate user feature
-  const [optionSelect, setOptionSelect] = useState<number>(1);
-
   const UserOptionsToggle = (id: number) => {
     setUserID(id);
 
@@ -42,16 +34,6 @@ function UserData({}: Props) {
 
     else {
       setOptionsToggle(false);
-    }
-  }
-
-  const FilterFormTOggle = () => {
-    if (filterToggle === 'none') {
-      setFilterToggle('block');
-    }
-
-    else {
-      setFilterToggle('none');
     }
   }
 
@@ -71,23 +53,17 @@ function UserData({}: Props) {
     return () => {};
   }
 
+
+
   return (
     <div id='table-wrapper'>
-      <Filter filterToggle={filterToggle} setFilterToggle={setFilterToggle} />
       {loading && <div className='loading-error-message'> <p> Loading Users..</p> </div>}
       {error && <div className='loading-error-message'> <p> Error Loading Users </p> </div>}
       
       {/* Table of Users */}
       {!loading && <table className='users-table'>
         <thead>
-          <tr>
-            {userTableHeads.map(head => (
-              <th key={head.id}> 
-                {head.title}
-                <img src={FilterImg} alt={`${head.title} Filter`} onClick={FilterFormTOggle} />
-              </th>
-            ))}
-          </tr>
+          <TableHeader />
         </thead>
        <tbody>
           {userData?.map(user => {
@@ -115,7 +91,6 @@ function UserData({}: Props) {
                       <li 
                         onClick={() => {
                           user['status'] = 'blacklisted'
-                          setOptionSelect(optionSelect + 1)
                           setOptionsToggle(false)
                         }}
                       >
@@ -125,7 +100,6 @@ function UserData({}: Props) {
                       <li 
                         onClick={() => {
                           user['status'] = 'active'
-                          setOptionSelect(optionSelect + 1)
                           setOptionsToggle(false)
                         }}
                       >

@@ -255,7 +255,7 @@
 
     thead tr th {
         min-width: 130px;
-        //margin: 20px 0px;
+        position: relative;
         font-family: 'Work Sans';
         font-weight: 600;
         font-size: 12px;
@@ -267,6 +267,13 @@
         img {
             margin-left: 7px;
             margin-bottom: -5px;
+        }
+
+    }
+
+    thead tr th:nth-child(6) {
+        .filter-wrapper {
+           left: -120px;
         }
     }
 

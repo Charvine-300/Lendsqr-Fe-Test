@@ -2,19 +2,21 @@
 
 
 
-/*==========  ID Rules  ==========*/
-
-
-
-
 /*==========  Class Rules  ==========*/
+.error {
+    color: $Blacklisted;
+    padding-bottom: 10px;
+    font-weight: 400;
+    font-family: 'Avenir Next Regular';
+}
+
 .filter-wrapper {
     @include container(270px, fit-content, 0);
     padding: 15px 0;
     position: absolute;
     z-index: 2;
-    top: 75px;
-    left: 20px;
+    top: 55px;
+    left: 0px;
     background: $White;
     border: 1px solid rgba(84, 95, 125, 0.14);
     box-shadow: 3px 5px 20px rgba(0, 0, 0, 0.1);
