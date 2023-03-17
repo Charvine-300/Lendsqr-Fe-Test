@@ -1,13 +1,9 @@
 import React, { useContext, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { Post } from '../../api/api'
 import '../../assets/styles/dashboard.scss'
 import TableHeader from './TableHeader'
-import Options from '../../assets/images/options.svg'
+import UserOptions from './UserOptions'
 import { CurrentUsersContext, IsError, IsLoading } from '../../utils/contexts'
-import ViewDetails from '../../assets/images/view.svg'
-import BlacklistUser from '../../assets/images/blacklist.svg'
-import ActivateUser from '../../assets/images/activate.svg'
 
 
 
@@ -20,39 +16,6 @@ function UserData({}: Props) {
   const userData = useContext(CurrentUsersContext);
   const loading = useContext(IsLoading);
   const error = useContext(IsError);
-
-  //Stateful variables to toggle user options
-  const [optionsToggle, setOptionsToggle] = useState<boolean>(false);
-  const [userID, setUserID] = useState<number>(0);
-
-  const UserOptionsToggle = (id: number) => {
-    setUserID(id);
-
-    if (optionsToggle === false) {
-      setOptionsToggle(true);
-    }
-
-    else {
-      setOptionsToggle(false);
-    }
-  }
-
-
-  //Function to fetch user and navigate to user details page
-  const ViewUserDetails = (id: number, status: any) => {
-    Post.getAPost(id)
-    .then(data => {
-      data['status'] = status;
-      console.log(data);
-      localStorage.setItem('userDetails', JSON.stringify(data));
-      navigate(`users/${id}`)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    return () => {};
-  }
-
 
 
   return (
@@ -74,41 +37,7 @@ function UserData({}: Props) {
                 <td style={{'textTransform': 'none'}}> {user.email} </td>
                 <td> {user.phoneNumber} </td>
                 <td> {user.createdAt} </td>
-                <td>
-                  <span className={user.status}> {user.status} </span>
-                </td>
-                <td> 
-                  <img src={Options} alt="Options icon" onClick={() => UserOptionsToggle(parseInt(user.id))} />
-                  <div 
-                    className='user-options' 
-                    style={{'display': `${userID === parseInt(user.id) && optionsToggle === true ? 'block' : 'none'}`}}
-                  >
-                    <ul>
-                      <li onClick={() => {ViewUserDetails(parseInt(user.id), user.status)}}>
-                        <img src={ViewDetails} alt="view details icon" />
-                        view details
-                      </li>
-                      <li 
-                        onClick={() => {
-                          user['status'] = 'blacklisted'
-                          setOptionsToggle(false)
-                        }}
-                      >
-                        <img src={BlacklistUser} alt="blacklist user icon" />
-                        blacklist user
-                      </li>
-                      <li 
-                        onClick={() => {
-                          user['status'] = 'active'
-                          setOptionsToggle(false)
-                        }}
-                      >
-                        <img src={ActivateUser} alt="activate user icon" />
-                        activate user
-                      </li>
-                    </ul>
-                  </div>
-                </td>
+                <UserOptions ID={user.id} User={user} />
               </tr>
             )
           })}

@@ -2,6 +2,7 @@ import '../../assets/styles/dashboard.scss'
 import { userFeatures } from '../../utils/constants'
 import UserData from './UserData'
 import Pagination from './Pagination'
+import UserDataPagination from './UserDataPagination'
 
 
 function Users() {
@@ -24,7 +25,7 @@ function Users() {
       <UserData />
 
       {/* Pagination */}
-      <Pagination />
+      <UserDataPagination />
     </div>
   )
 }

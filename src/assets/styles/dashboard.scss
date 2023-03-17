@@ -25,6 +25,7 @@
 
 #pagination-wrapper {
     @include container(fit-content, fit-content, 0px auto);  
+    margin-right: 0;
     @include flexboxWrap(row, center, center);
     padding: 10px 0; 
 
@@ -45,8 +46,6 @@
     }
 
     button {
-        background: none;
-        border: none;
         font-family: 'Work Sans';
         font-style: normal;
         font-weight: 500;
@@ -67,8 +66,64 @@
     }
 }
 
+#pagination-wrapper nav ul li {
+    button {
+        
+        svg {
+            @include container(24px, 24px, 0px);
+            position: absolute;
+            left: 0; 
+            right: 0; 
+            margin-left: auto; 
+            margin-right: auto; 
+        }
+
+        span {
+            @include container(fit-content, fit-content, 0px);
+        }
+
+    }
+
+    &:nth-child(1), &:last-child {
+        background-color: rgba(33, 63, 125, 0.1);
+        @include container(32px, 32px, 0);
+        border-radius: 4px;
+        position: relative;
+
+        button {
+            padding: 0;
+            @include container(100%, 100%, 0px);
+        }
+        
+    }
+    
+    .MuiPaginationItem-ellipsis {
+        height: 32px;
+
+        &::before {
+            content: '. . .';
+            font-size: 16px;
+            color: $Inactive;
+        }
+    }
+
+    .Mui-selected {
+        background-color: transparent !important;
+        opacity: 1 !important;
+    }
+
+    .MuiPaginationItem-page {
+        opacity: 0.6;
+    }
+}
+
+
+   
+    
+
 #total-wrapper {
     @include container(fit-content, fit-content, 20px auto);  
+    margin-left: 0;
     @include flexboxWrap(row, center, center);
     padding: 10px;  
     
@@ -114,7 +169,7 @@
 }
 
 #bottom-details {
-    @include flexboxWrap(column, center, center);
+    @include flexboxWrap(row, center, center);
     @include container(100%, fit-content, 0px auto);
     padding-bottom: 60px;
 
