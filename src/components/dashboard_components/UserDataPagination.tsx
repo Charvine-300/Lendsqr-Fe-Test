@@ -31,7 +31,6 @@ const UserDataPagination = () => {
   const nextPage = (event: any)  => {
     //Function if page number button is pushed
     if (event.target.ariaLabel) {
-      //console.log(event.target.ariaLabel.split(' '));
       let number = parseInt(event.target.ariaLabel.split(' ')[3])
       console.log(number);
       setPageNumber(number);
@@ -40,7 +39,6 @@ const UserDataPagination = () => {
     //Function if Previous.next buttons are pushed
     else if (!event.target.ariaLabel) {
       let eventTag = event.srcElement.attributes[4].nodeValue;
-      //console.log(event.srcElement.attributes[4].nodeValue);
       if (eventTag === "NavigateNextIcon" && pageNumber < totalPages) {
         setPageNumber(pageNumber + 1);
       }
@@ -77,7 +75,6 @@ const UserDataPagination = () => {
         <Pagination 
           count={totalPages}
           onChange={() => nextPage(event)}
-          boundaryCount={2}
         />
         </div>
       </div>
