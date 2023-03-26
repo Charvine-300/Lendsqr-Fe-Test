@@ -21,7 +21,7 @@
     margin: 20px 0 20px 28px;
 
     img {
-        @include container(144px, 34px, 0);
+        @include container(144px, 30px, 0);
     }
 
     @include desktopView {

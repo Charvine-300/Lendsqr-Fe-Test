@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react'
+import React, { Fragment, useState } from 'react'
 import '../assets/styles/header.scss'
 import Menu from '../assets/images/menu.svg'
 import Close from '../assets/images/close.svg'
@@ -10,17 +10,15 @@ import Arrow from '../assets/images/arrow.svg'
 import MobileSearch from '../assets/images/mobile_search.svg'
 
 
-type Props = {
+interface Props {
   sidebarToggle: string;
-  setSidebarToggle: any;
+  setSidebarToggle: (toggle: string) => void;
 }
 
 function Header({ sidebarToggle, setSidebarToggle }: Props) {
   //Stateful variable for search bar toggle in mobile view
-  const [searchToggle, setSearchToggle] = useState('desktop');
-
-  //Stateful variable for sidebar toggle in mobile view
-  const [menuImg, setMenuImg] = useState(Menu);
+  const [searchToggle, setSearchToggle] = useState<string>('desktop');
+  const [menuAltText, setMenuAltText] = useState<string>('menu');
 
   const searchBarToggle = () => {
     if (searchToggle === 'desktop') {
@@ -36,12 +34,12 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
   const SidebarToggle = () => {
     if (sidebarToggle === 'desktop') {
       setSidebarToggle('mobile');
-      setMenuImg(Close);
+      setMenuAltText('close')
     }
 
     else {
       setSidebarToggle('desktop');
-      setMenuImg(Menu);
+      setMenuAltText('menu')
     }
   }
 
@@ -54,11 +52,12 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
       <header>
         <div className="header-items">
           <span id='desktop-header-logo' className='desktop'>
-            <img src={Logo} alt="Comapny Logo" className='header-logo' />
+            <img src={Logo} alt="Company Logo" className='header-logo' />
           </span>
           <img 
-            src={menuImg} 
-            alt="Lendsqr logo" 
+            src={sidebarToggle === 'desktop' ? Menu : Close} 
+            alt={menuAltText}
+            data-testid='menu-icon'
             className='mobile' 
             onClick={SidebarToggle}
           />

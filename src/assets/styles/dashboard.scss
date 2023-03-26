@@ -25,6 +25,7 @@
 
 #pagination-wrapper {
     @include container(fit-content, fit-content, 0px auto);  
+    margin-right: 0;
     @include flexboxWrap(row, center, center);
     padding: 10px 0; 
 
@@ -51,7 +52,6 @@
         font-size: 16px;
         line-height: 19px;
         color: $Inactive;
-        padding: 0;
     }
 
     .right-margin {
@@ -91,6 +91,7 @@
         position: relative;
 
         button {
+            padding: 0;
             @include container(100%, 100%, 0px);
         }
         
@@ -122,6 +123,7 @@
 
 #total-wrapper {
     @include container(fit-content, fit-content, 20px auto);  
+    margin-left: 0;
     @include flexboxWrap(row, center, center);
     padding: 10px;  
     
@@ -167,7 +169,7 @@
 }
 
 #bottom-details {
-    @include flexboxWrap(column, center, center);
+    @include flexboxWrap(row, center, center);
     @include container(100%, fit-content, 0px auto);
     padding-bottom: 60px;
 

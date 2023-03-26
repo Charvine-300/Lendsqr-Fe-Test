@@ -75,6 +75,7 @@ const UserDataPagination = () => {
         <Pagination 
           count={totalPages}
           onChange={() => nextPage(event)}
+          boundaryCount={2}
         />
         </div>
       </div>

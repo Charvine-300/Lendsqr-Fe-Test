@@ -27,7 +27,7 @@ import {
 
 
 
-const App: React.FC = () => {
+function App() {
 
   //Creating an array of status types to pick at random for each user
   const statusTypes = ['active', 'inactive', 'pending', 'blacklisted'];
@@ -137,4 +137,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App;
+export default App

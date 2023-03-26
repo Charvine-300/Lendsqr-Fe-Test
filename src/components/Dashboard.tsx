@@ -11,7 +11,7 @@ import '../assets/styles/dashboard.scss'
 
 function Dashboard() {
   //Stateful variable for sidebar toggle in mobile view
-  const [sidebarToggle, setSidebarToggle] = useState('desktop');
+  const [sidebarToggle, setSidebarToggle] = useState<string>('desktop');
 
   return (
     <div className="dashboard-wrapper">

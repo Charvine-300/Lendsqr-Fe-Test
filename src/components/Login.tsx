@@ -4,16 +4,15 @@ import Logo from '../assets/images/logo.svg';
 import LoginImg from '../assets/images/login_illustration.svg';
 import { useForm, SubmitHandler } from 'react-hook-form';
 import { IFormInput } from '../utils/interfaces'
-import { useNavigate } from 'react-router-dom';
+
 
 
 function Login() {
-  const navigate: any = useNavigate();
   
   //Form validation
   const { register, formState: { errors }, handleSubmit } = useForm<IFormInput>();
   const onSubmit: SubmitHandler<IFormInput> = data => {
-    navigate('/dashboard');
+    window.location.href = '/dashboard';
   }
 
   //Stateful variable for controlling password input show/hide feature
@@ -48,7 +47,7 @@ function Login() {
               <p id="details">
                 Enter details to login.
               </p>
-              <form method='POST' onSubmit={handleSubmit(onSubmit)}>
+              <form method='POST' data-testid='login-form' onSubmit={handleSubmit(onSubmit)}>
                 <input 
                   type="email" 
                   placeholder='Email' 
@@ -75,7 +74,7 @@ function Login() {
 
                 <p> forgot password? </p>
 
-                <input type="submit" value="log in" className='log-in' />
+                <input type="submit" value="log in" className='log-in' data-testid='submit-button' />
               </form>
             </div>
           </div>
