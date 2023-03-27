@@ -1,4 +1,4 @@
-import { Fragment, useState, useEffect, createContext } from "react"
+import { Fragment, useState, useEffect } from "react"
 import Login from "./components/Login"
 import Dashboard from "./components/Dashboard"
 import ScrollToTop from "./components/ScrollToTop"
@@ -25,10 +25,7 @@ import {
 
 
 
-
-
 function App() {
-
   //Creating an array of status types to pick at random for each user
   const statusTypes = ['active', 'inactive', 'pending', 'blacklisted'];
 
@@ -36,39 +33,49 @@ function App() {
   const [isError, setIsError] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState<boolean>(true);
 
-  //Stateful variable for creating pagination
+  //Stateful variable for slicng data into different pages
   const [currentPage, setCurrentPage] = useState<number>(1);
   const [usersPerPage, setUsersPerPage] = useState<number>(10);
 
 
   useEffect(() => {
-    //Making request to API to get user data
-    Post.getPosts()
-    .then(data => {
-      for (let i = 0; i < data.length; i++) {
-        const random = Math.floor(Math.random() * statusTypes.length);
-        data[i].status = statusTypes[random];
-
-        //Coverting dates to DD/MM/YYYY format
-        data[i].createdAt = moment.utc(data[i].createdAt).format('MMM D, YYYY h:mm A');
-
-        //Converting the Phone Number Format to (XXX) XXX-XXXX
-        data[i].phoneNumber = data[i].phoneNumber.split('x').shift();
-      }
-
-      //Storing data in localStorage for reset feature in filter form
-      localStorage.setItem('userData', JSON.stringify(data));
-      setUserData(data)
-      setIsLoading(false)
-    })
-    .catch((err) => {
-      setIsError(true);
+    //Check if user data already exists in localStorage
+    if (localStorage.getItem('userData')) {
+      let data = JSON.parse(localStorage.getItem('userData')!);
+      setUserData(data);
       setIsLoading(false);
-      console.log(err)
-    });
-    return () => {};
-  }, []);
+      return;
+    }
 
+    else {
+      //Making request to API to get user data
+      Post.getPosts()
+      .then(data => {
+        for (let i = 0; i < data.length; i++) {
+          const random = Math.floor(Math.random() * statusTypes.length);
+          data[i].status = statusTypes[random];
+
+          //Coverting dates to DD/MM/YYYY format
+          data[i].createdAt = moment.utc(data[i].createdAt).format('MMM D, YYYY h:mm A');
+
+          //Converting the Phone Number Format to (XXX) XXX-XXXX
+          data[i].phoneNumber = data[i].phoneNumber.split('x').shift();
+        }
+
+        //Storing data in localStorage for reset feature in filter form
+        localStorage.setItem('userData', JSON.stringify(data));
+        setUserData(data)
+        setIsLoading(false)
+      })
+      .catch((err) => {
+        setIsError(true);
+        setIsLoading(false);
+        console.log(err)
+      });
+      return () => {};
+    }
+
+  }, []);
 
   //Varables for slicing through user data
   const lastPostIndex = currentPage * usersPerPage;

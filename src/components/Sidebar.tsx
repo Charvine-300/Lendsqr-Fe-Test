@@ -24,7 +24,7 @@ const Sidebar = ({ display }: Props) => {
 
   return (
     <Fragment>
-      <div className={`sidebar-wrapper ${display}`} title='sidebar'>
+      <div className={`sidebar-wrapper ${display}`} data-testid='sidebar'>
         <div className="menu">
           <div id="mobile-logo">
             <img src={Logo} alt="Lendsqr logo" className='mobile' />

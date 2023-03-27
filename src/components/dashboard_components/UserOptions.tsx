@@ -1,5 +1,4 @@
 import { useNavigate } from 'react-router-dom'
-import { Post } from '../../api/api'
 import '../../assets/styles/dashboard.scss'
 import { useState, useRef, useEffect } from 'react'
 import Options from '../../assets/images/options.svg'
@@ -46,32 +45,22 @@ const UserOptions = ({ ID, User }: Props) => {
     }
 
  
-   function handleOutsideClick(event: MouseEvent): void {
+    function handleOutsideClick(event: MouseEvent): void {
      if (modalRef.current) {
-       // Check if the click occurred outside the modal
-       if (!modalRef.current.contains(event.target as Node)) {
-         closeModal();
-       }
-       // Check if the click occurred inside the modal but outside the modal content
-       else if (!modalRef.current.querySelector('.modal-content')?.contains(event.target as Node)) {
+        // Check if the click occurred outside the modal
+        if (!modalRef.current.contains(event.target as Node)) {
+          closeModal();
+        }
+        // Check if the click occurred inside the modal but outside the modal content
+        else if (!modalRef.current.querySelector('.modal-content')?.contains(event.target as Node)) {
          event.stopPropagation();
-       }
-     }
-   }
+        }
+      }
+    }
 
    //Function to fetch user and navigate to user details page
-   const ViewUserDetails = (id: number, status: any) => {
-    Post.getAPost(id)
-    .then(data => {
-      data['status'] = status;
-      console.log(data);
-      localStorage.setItem('userDetails', JSON.stringify(data));
-      navigate(`users/${id}`)
-    })
-    .catch(err => {
-      console.log(err)
-    })
-    return () => {};
+   const ViewUserDetails = (id: number) => {
+    navigate(`users/${id}`)
   }
 
   useEffect(() => {
@@ -96,7 +85,7 @@ const UserOptions = ({ ID, User }: Props) => {
           style={{'display': `${userID === parseInt(ID) && optionsToggle === true ? 'block' : 'none'}`}}
         >
           <ul>
-            <li onClick={() => {ViewUserDetails(parseInt(ID), User.status)}}>
+            <li onClick={() => {ViewUserDetails(parseInt(ID))}}>
               <img src={ViewDetails} alt="view details icon" />
               view details
             </li>

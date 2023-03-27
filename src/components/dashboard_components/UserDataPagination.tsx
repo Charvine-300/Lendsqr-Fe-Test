@@ -49,10 +49,11 @@ const UserDataPagination = () => {
     }
   }
 
-  //Function to display last page userss when number of users per page changes
-  const showLastPage = (e: any) => {
+  //Function to display first page users when number of users per page changes
+  const showFirstPage = (e: any) => {
     setPerPage(e.target.value)
     setPageNumber(1);
+    console.log(pageNumber)
   }
 
 
@@ -63,7 +64,7 @@ const UserDataPagination = () => {
         <div id="total-wrapper">
           <p>
             Showing 
-            <select name="digits" id="digits" onChange={(e) => showLastPage(e)}>
+            <select name="digits" id="digits" onChange={(e) => showFirstPage(e)}>
               <option value="10"> 10 </option>
               <option value="20"> 20 </option>
               <option value="25"> 25 </option>
@@ -75,7 +76,6 @@ const UserDataPagination = () => {
         <Pagination 
           count={totalPages}
           onChange={() => nextPage(event)}
-          boundaryCount={2}
         />
         </div>
       </div>

@@ -24,25 +24,3 @@ test('Login form has submit button', () => {
     const submitButton = screen.getByTestId('submit-button');
     expect(submitButton).toBeInTheDocument();
 }) 
-
-/*it('should redirect to dashboard page on successful login', async () => {
-    const history = createMemoryHistory();
-    render(
-      <Router history={history}>
-        <Login />
-      </Router>
-    );
-
-    const emailInput = screen.getByPlaceholderText('Email');
-    const passwordInput = screen.getByPlaceholderText('Password');
-    const submitButton = screen.getByRole('button', { name: 'Submit' });
-
-    fireEvent.change(emailInput, { target: { value: 'example@example.com' } });
-    fireEvent.change(passwordInput, { target: { value: 'password' } });
-    fireEvent.click(submitButton);
-
-    // Wait for redirection to happen
-    await screen.findByTestId('dashboard-page');
-
-    expect(history.location.pathname).toBe('/dashboard');
-  });*/

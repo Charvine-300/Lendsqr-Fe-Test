@@ -1,40 +1,47 @@
 //jest.mock('react-router-dom', () => require('__mocks__/react-router-dom.mock'));
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, waitFor } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import { Router } from 'react-router-dom';
-import React from 'react';
 
-//Mock Component for Router 
+//Mock function for setSidebarToggle hook
+const setSidebarToggle = jest.fn(); 
+
+describe('Header', () => {
+  test('Check if menu icon is present in component', () => {
+    render(<Header sidebarToggle={''} setSidebarToggle={setSidebarToggle} />); //Component to be tested
+    const imgElement = screen.getByAltText(/menu/i) as HTMLImageElement; //Searching for an element ot interact with
+    expect(imgElement).toBeInTheDocument(); //Assertion of expectation of results of element interaction
+  });
+  
+  test('Check if menu icon changes to close icon and back onclick', async () => {
+    render(<Header sidebarToggle={''} setSidebarToggle={setSidebarToggle} />);
+    const imgElement = await screen.getByAltText(/menu/i) as HTMLImageElement;
+
+    //Simulate click event on menu icon to change to close icon
+    fireEvent.click(imgElement, {target: { alt: 'close' }});
+    await waitFor(() => {
+      expect(imgElement).toHaveAttribute('alt' , 'close');
+    });
+
+    //Simulate click event on close icon to change back to menu icon
+    fireEvent.click(imgElement, {target: { alt: 'menu' }});
+    await waitFor(() => {
+      expect(imgElement).toHaveAttribute('alt' , 'menu');
+    });
+   
+  });
+})
 
 
-
-test('Check if menu icon is present in component', () => {
-  const setSidebarToggle = jest.fn(); 
-  render(<Header sidebarToggle={''} setSidebarToggle={setSidebarToggle} />); //Component to be tested
-  const imgElement = screen.getByTestId(/menu-icon/i) as HTMLImageElement; //Searching for an element ot interact with
-  expect(imgElement).toBeInTheDocument(); //Assertion of expectation of results of element interaction
+describe('Sidebar', () => {
+  test('Check if sidebar is present in component', () => {
+    render(<Sidebar display='' />);
+    const sidebarElement = screen.getByTestId(/sidebar/i) as HTMLDivElement;
+    expect(sidebarElement).toBeInTheDocument();
+  });
 });
 
 
-/*it('Sidebar opens and closes on menu icon click in mobile view', () => {
-  render(<Sidebar display={''} />);
-  const sidebarElement = screen.getByTitle(/sidebar/i) as HTMLDivElement;
-  expect(sidebarElement).toBeInTheDocument();
 
-})
 
-//Using findBy and findAllBy queries asynchronously
-it('Find DIV element in component asynchronously', async () => {  
-  render(<Sidebar display='' />);
-  const divElements = await screen.findByTitle(/sidebar/i) as HTMLDivElement;
-  expect(divElements).toBeInTheDocument()
-})
-
-//Checking for non-existent elements
-it('Check for non-existent div element', async () => {  
-  render(<Sidebar display='' />);
-  const divElements = await screen.queryByTitle(/chocolate-bar/i) as HTMLDivElement;
-  expect(divElements).not.toBeInTheDocument()
-})*/

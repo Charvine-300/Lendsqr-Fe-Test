@@ -1,6 +1,6 @@
 import '../assets/styles/userdetails.scss'
 import { useNavigate, useParams } from 'react-router-dom'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { UserDataProps } from '../utils/interfaces'
 import { userMenuItems } from '../utils/constants'
 import StarOn from '../assets/images/star_on.svg'
@@ -11,7 +11,7 @@ import DashboardArrow from '../assets/images/back_to_users.svg'
 type Props = {}
 
 function UserDetails({}: Props) {
-  const { id } = useParams()
+  const { id = '' } = useParams()
   const navigate = useNavigate()
   const [userDetails, setUserDetails] = useState<UserDataProps>();
   const[menuSelected, setMenuSelected] = useState(1);
@@ -21,8 +21,9 @@ function UserDetails({}: Props) {
 
 
   useEffect(() => {
-    //Retrieving data from localStorage
-    setUserDetails(JSON.parse(localStorage.getItem('userDetails') || ''))
+    //Retrieving user details from localStorage
+    let user = JSON.parse(localStorage.getItem('userData')!);
+    setUserDetails(user[parseInt(id) - 1]);
   }, []);
 
 

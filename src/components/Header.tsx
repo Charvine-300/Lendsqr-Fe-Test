@@ -57,7 +57,6 @@ function Header({ sidebarToggle, setSidebarToggle }: Props) {
           <img 
             src={sidebarToggle === 'desktop' ? Menu : Close} 
             alt={menuAltText}
-            data-testid='menu-icon'
             className='mobile' 
             onClick={SidebarToggle}
           />
